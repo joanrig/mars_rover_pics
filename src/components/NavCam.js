@@ -29,7 +29,6 @@ class NavCam extends Component {
   }
 
   fetchPics = () => {
-    debugger
     const rover = this.state["rover"]
     const camera = this.state["camera"]
     const sol = this.state["sol"]

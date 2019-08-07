@@ -26,6 +26,7 @@ class PhotoCard extends Component {
         <Card.Content >
           <Card.Header >
             <h1>{this.props["rover"]["name"]}</h1>
+            <h3>{this.props["camera"]["full_name"]}</h3>
           </Card.Header>
         </Card.Content>
 
