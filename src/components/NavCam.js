@@ -20,7 +20,7 @@ class NavCam extends Component {
 
   fetchPics = () => {
     const sol = this.state.search
-    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&camera=navcam&page-1&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
+    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&camera=navcam&page-1&api_key=`
 
     fetch(url)
       .then(response => response.json())
