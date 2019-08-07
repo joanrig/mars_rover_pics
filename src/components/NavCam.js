@@ -65,7 +65,7 @@ class NavCam extends Component {
             name="sol"
             type="text"
             placeholder="enter sol"
-            value={this.state.search}
+            value={this.state.sol}
             onChange={this.handleInputChange}
           />
         </form>
