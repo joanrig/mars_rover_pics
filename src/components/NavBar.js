@@ -9,7 +9,7 @@ const NavBar = () => {
         <br/>
         <div className='navbar center'>
           <Link to='/' ><Button size='massive' color='purple'>Home</Button></Link>
-          <Link to='/navcam' ><Button size='massive' color='pink'>Navcam</Button></Link>
+          <Link to='/search' ><Button size='massive' color='pink'>Search</Button></Link>
           <br/>
           <br/>
         </div>

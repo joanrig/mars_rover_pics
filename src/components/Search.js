@@ -4,7 +4,7 @@ import PhotoCard from './PhotoCard'
 
 
 
-class NavCam extends Component {
+class Search extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -49,7 +49,7 @@ class NavCam extends Component {
       <Container className="center">
         <br/>
         <h1>
-          NavCam pics
+          Search Mars Rover Photos
         </h1>
 
         <form>
@@ -85,7 +85,7 @@ class NavCam extends Component {
         <br/>
         <br/>
 
-        <Button size="big" color="orange" onClick={this.fetchPics}>See NavCam Pics</Button>
+        <Button size="big" color="orange" onClick={this.fetchPics}>Find Photos</Button>
         <br/>
         <br/>
         <br/>
@@ -104,4 +104,4 @@ class NavCam extends Component {
 
 
 }
-export default NavCam
+export default Search
