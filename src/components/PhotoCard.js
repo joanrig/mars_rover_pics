@@ -12,8 +12,14 @@ class PhotoCard extends Component {
   }
 
   render(){
+    let notFound = ""
+    if (!this.props){
+      notFound = "No photos found. Please try again."
+    }
+
     return (
     <>
+      {notFound}
       <Card>
         <Image src={this.props["img_src"]} wrapped ui={false}  />
 
