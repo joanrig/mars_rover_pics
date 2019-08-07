@@ -9,18 +9,27 @@ class NavCam extends Component {
     super(props)
     this.state = {
       photos: [],
-      search: ''
-
+      rover: "curiosity",
+      camera: "navcam",
+      sol: "1000",
+      earth_date: ""
     }
   }
 
-  updateSearch = (event) => {
-    this.setState({search: event.target.value.substr(0, 100)})
+
+  handleInputChange = (event) => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value.toLowerCase();
+    const name = target.name;
+    this.setState({[name]: value})
   }
 
   fetchPics = () => {
-    const sol = this.state.search
-    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&camera=navcam&page-1&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
+    const rover = this.state["rover"]
+    const camera = this.state["camera"]
+    const sol = this.state["sol"]
+    console.log(rover, camera, sol)
+    const url = 
 
     fetch(url)
       .then(response => response.json())
@@ -40,14 +49,29 @@ class NavCam extends Component {
         </h1>
 
         <form>
+          <label>
+            Pick a Mars Rover <br/>
+            <select value={this.state.rover.value} onChange={this.handleChange}>
+              <option value="curiosity">Curiosity</option>
+              <option value="opportunity">Opportunity</option>
+              <option value="spirit">Spirit</option>
+            </select>
+          </label>
+          <br/>
+          <br/>
+          <br/>
+
           <input
-            id="sol"
+            name="sol"
             type="text"
             placeholder="enter sol"
             value={this.state.search}
-            onChange={this.updateSearch}
+            onChange={this.handleInputChange}
           />
         </form>
+        <br/>
+        <br/>
+        <br/>
 
         <Button size="big" color="orange" onClick={this.fetchPics}>See NavCam Pics</Button>
         <br/>
