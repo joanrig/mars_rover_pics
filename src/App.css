@@ -3,13 +3,21 @@
 }
 
 body {
-  background:black;
-  color:white;
+  background:white;
 }
 
 .center {
   text-align: center;
 }
+
+.ui.radio> {
+  color:white;
+}
+
+.scroll {
+  overflow: scroll;
+}
+
 
 .App-link {
   color: #61dafb;
@@ -17,7 +25,7 @@ body {
 
 .select {
   text-align-last:center;
-  font-size: 1.25em;
+  font-size: 1em;
   color:black;
   background-color:lightblue;
   height: 3em;

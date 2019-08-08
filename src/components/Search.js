@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Button, Grid, Card } from 'semantic-ui-react'
 import PhotoCard from './PhotoCard'
 import CameraOptions from './CameraOptions'
+import ChooseDate from './ChooseDate'
 
 
 class Search extends Component {
@@ -11,8 +12,9 @@ class Search extends Component {
       photos: [],
       rover: "",
       camera: "",
-      sol: "",
-      earth_date: ""
+      sol: "1000",
+      earth_date: "",
+      dateType: ""
     }
   }
 
@@ -44,6 +46,8 @@ class Search extends Component {
       .then(photos => this.setState({photos: photos["photos"]}))
     }
 
+
+
   render(){
     console.log('this.state.rover is', this.state.rover)
 
@@ -73,32 +77,7 @@ class Search extends Component {
              </label>
             </Grid.Column>
             <Grid.Column>
-            <h2>Step 2. Pick a date</h2>
-            <label>
-              Earth date:<br/>
-              <input
-                name="earth_date"
-                type="text"
-                placeholder="YYYY-MM-DD"
-                value={this.state.earth_date}
-                onChange={this.handleChange}
-                className="center"
-              />
-              </label>
-              <br/>
-              <br/>
-              <br/>
-              <label>
-                Enter sol:<br/>
-                <input
-                  name="sol"
-                  type="number"
-                  placeholder="enter sol"
-                  value={this.state.sol}
-                  onChange={this.handleChange}
-                  className="center"
-                />
-              </label>
+              <ChooseDate/>
             </Grid.Column>
             <Grid.Column>
               <label>
@@ -115,9 +94,10 @@ class Search extends Component {
         </form>
         <br/>
         <br/>
+        <hr/>
+        <br/>
 
-
-        <Button size="big" color="orange" onClick={this.fetchPics}>Get Photos</Button>
+        <Button size="large" color="grey" onClick={this.fetchPics}>Get Photos</Button>
 
         <br/>
         <br/>
