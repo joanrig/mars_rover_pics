@@ -8,6 +8,7 @@ const Home = () => {
   return (
     <Container className="center">
       <br/>
+      
       <h1>
         Mars Rover Pics
       </h1>
