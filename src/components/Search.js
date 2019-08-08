@@ -32,8 +32,6 @@ class Search extends Component {
   fetchPics = () => {
     const rover = this.state["rover"]
     const camera = this.state["camera"]
-    const sol = this.state["sol"]
-    const earthDate = this.state["earth_date"]
 
     let date = ""
     if (this.state.sol > 0) {
@@ -42,8 +40,14 @@ class Search extends Component {
       date = `earth_date=${this.state.earth_date}`
     }
 
-    console.log(rover, camera, sol, date, earthDate)
+    let url = ""
   
+
+
+
+
+
+
     console.log(url)
     fetch(url)
       .then(response => response.json())
@@ -53,7 +57,25 @@ class Search extends Component {
 
 
   render(){
-    console.log('this.state.rover is', this.state.rover)
+    console.log('inside search render, this.state is', this.state)
+
+
+//comes after you get the photos so useless for search
+    // let chosenRover = ""
+    // let landingDate = ""
+    // let launchDate = ""
+    // let maxDate = ""
+    // let maxSol = ""
+    // if(this.state.photos[0]){
+    //  chosenRover = this.state.photos[0]["rover"]
+    //  landingDate = chosenRover["landing_date"]
+    //  launchDate = chosenRover["launch_date"]
+    //  maxDate = chosenRover["max_date"]
+    //  maxSol = chosenRover["max_sol"]
+    //
+    // }
+
+
 
 
     return (
