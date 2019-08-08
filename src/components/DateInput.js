@@ -12,7 +12,7 @@ class DateInput extends Component {
 
   handleChange = (event) => {
     const target = event.target;
-    const value = target.value.toLowerCase();
+    const value = target.value
     const name = target.name;
     this.setState({[name]: value})
 
@@ -32,7 +32,7 @@ class DateInput extends Component {
             type="number"
             placeholder="enter sol"
             value={this.state.sol}
-            onChange={this.handleChange}
+            onChange={(event) => EventEmitter.dispatch('getDateInput', event)}
             className="center"
           />
         </label>
@@ -45,7 +45,7 @@ class DateInput extends Component {
           type="text"
           placeholder="YYYY-MM-DD"
           value={this.state.earth_date}
-          onChange={this.handleChange}
+          onChange={(event) => EventEmitter.dispatch('getDateInput', event)}
           className="center"
         />
         </label>
@@ -53,7 +53,9 @@ class DateInput extends Component {
 
     return (
       <>
-        <form onSubmit={(event) => EventEmitter.dispatch('getDateInput', event)}>
+        <form
+          onChange={this.handleChange}
+          onSubmit={(event) => EventEmitter.dispatch('getDateInput', event)}>
           {dateInput}
         </form>
       </>

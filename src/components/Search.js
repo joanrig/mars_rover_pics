@@ -13,7 +13,7 @@ class Search extends Component {
       photos: [],
       rover: "",
       camera: "",
-      sol: "1000",
+      sol: "",
       earth_date: "",
       dateType: ""
     }
@@ -21,6 +21,7 @@ class Search extends Component {
   }
 
   handleChange = (event) => {
+    console.log(event)
     const target = event.target;
     const value = target.value.toLowerCase();
     const name = target.name;
@@ -29,6 +30,7 @@ class Search extends Component {
   }
 
   fetchPics = () => {
+    debugger
     const rover = this.state["rover"]
     const camera = this.state["camera"]
     const sol = this.state["sol"]
@@ -42,7 +44,7 @@ class Search extends Component {
     }
 
     console.log(rover, camera, sol, date, earthDate)
-    const url =  
+    const url =  `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&camera=${camera}&page-1&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
     fetch(url)
       .then(response => response.json())
       .then(photos => this.setState({photos: photos["photos"]}))
