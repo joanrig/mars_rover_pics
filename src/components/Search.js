@@ -3,7 +3,6 @@ import { Container, Button, Card } from 'semantic-ui-react'
 import PhotoCard from './PhotoCard'
 
 
-
 class Search extends Component {
   constructor(props){
     super(props)
@@ -15,7 +14,6 @@ class Search extends Component {
       earth_date: ""
     }
   }
-
 
   handleChange = (event) => {
     const target = event.target;
@@ -39,17 +37,15 @@ class Search extends Component {
     }
 
     console.log(rover, camera, sol, date, earthDate)
-    const url =
+    const url = 
     fetch(url)
       .then(response => response.json())
       .then(photos => this.setState({photos: photos["photos"]}))
     }
 
 
-
   render(){
     console.log('this.state.rover is', this.state.rover)
-
 
 
     let options = ""
@@ -84,11 +80,15 @@ class Search extends Component {
         <h1>
           Search Mars Rover Photos
         </h1>
+        <br/>
+        <br/>
+        <br/>
 
         <form>
           <label>
-           Pick a rover<br/>
-           <select name="rover" rover={this.state.rover} onChange={this.handleChange}>
+           <h2> Step 1. Pick a rover</h2><br/>
+           <select className="select" name="rover" rover={this.state.rover} onChange={this.handleChange} >
+             <option disabled selected value> -- select an option -- </option>
              <option value="curiosity">Curiosity</option>
              <option value="spirit">Spirit</option>
              <option value="opportunity">Opportunity</option>
@@ -97,32 +97,38 @@ class Search extends Component {
           <br/>
           <br/>
           <br/>
-          <h1>Enter earth date OR sol</h1>
-          <input
-            name="earth_date"
-            type="text"
-            placeholder="enter earth date as YYYY-MM-DD"
-            value={this.state.earth_date}
-            onChange={this.handleChange}
-          />
+          <h3>Step 2: Pick a date</h3>
+          <label>
+            Earth date:<br/>
+            <input
+              name="earth_date"
+              type="text"
+              placeholder="YYYY-MM-DD"
+              value={this.state.earth_date}
+              onChange={this.handleChange}
+              className="center"
+            />
+          </label>
           <br/>
           <br/>
           <br/>
           <label>
-            Enter sol:
+            Enter sol:<br/>
             <input
               name="sol"
               type="number"
               placeholder="enter sol"
               value={this.state.sol}
               onChange={this.handleChange}
+              className="center"
             />
           </label>
           <br/>
           <br/>
           <label>
-           Pick a camera<br/>
-           <select name="camera" camera={this.state.camera} onChange={this.handleChange}>
+           <h2> Step 3. Pick a camera</h2><br/>
+           <select className="select" name="camera" camera={this.state.camera} onChange={this.handleChange}>
+            <option disabled selected value> -- select an option -- </option>
              {options}
            </select>
          </label>

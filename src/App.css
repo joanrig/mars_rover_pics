@@ -9,3 +9,11 @@
 .App-link {
   color: #61dafb;
 }
+
+.select {
+  text-align-last:center;
+  font-size: 1.25em;
+  color:black;
+  background-color:lightblue;
+  height: 3em;
+}
