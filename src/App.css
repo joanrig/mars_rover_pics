@@ -28,11 +28,12 @@ body {
   font-size: 1em;
   color:black;
   background-color:lightblue;
-  height: 3em;
+  height: 2em;
+  width: 15em;
 }
 
 .dates {
-  height: 2.5em
+  height: 2em
 }
 
 .earth-date {

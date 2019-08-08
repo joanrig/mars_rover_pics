@@ -30,7 +30,6 @@ class Search extends Component {
   }
 
   fetchPics = () => {
-    debugger
     const rover = this.state["rover"]
     const camera = this.state["camera"]
     const sol = this.state["sol"]
@@ -44,7 +43,8 @@ class Search extends Component {
     }
 
     console.log(rover, camera, sol, date, earthDate)
-    const url =  
+  
+    console.log(url)
     fetch(url)
       .then(response => response.json())
       .then(photos => this.setState({photos: photos["photos"]}))

@@ -11,7 +11,8 @@ class ChooseDateType extends Component {
 
     return (
       <>
-        <h2>Step 2. Pick a date</h2>
+        <h2>Step 2</h2>
+        <h4>Search by date</h4>
         <Form>
           <Form.Field >
             <Radio
