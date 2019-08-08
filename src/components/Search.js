@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Button, Card } from 'semantic-ui-react'
 import PhotoCard from './PhotoCard'
+import CameraOptions from './CameraOptions'
 
 
 class Search extends Component {
@@ -37,7 +38,7 @@ class Search extends Component {
     }
 
     console.log(rover, camera, sol, date, earthDate)
-    const url = 
+    const url =  
     fetch(url)
       .then(response => response.json())
       .then(photos => this.setState({photos: photos["photos"]}))
@@ -46,32 +47,6 @@ class Search extends Component {
 
   render(){
     console.log('this.state.rover is', this.state.rover)
-
-
-    let options = ""
-    if (this.state.rover === "spirit" || this.state.rover === "opportunity") {
-      options =
-      <>
-        <option value="navcam">NavCam</option>
-        <option value="fhaz">Front Hazard Avoidance Camera</option>
-        <option value="rhaz">Rear Hazard Avoidance Camera</option>
-        <option value="pancam">Panoramic Camera</option>
-        <option value="minites">Miniature Thermal Emission Spectrometer (Mini-TES)</option>
-      </>
-    } else if (this.state.rover === "curiosity") {
-      options =
-      <>
-        <option value="navcam">NavCam</option>
-        <option value="fhaz">Front Hazard Avoidance Camera</option>
-        <option value="rhaz">Rear Hazard Avoidance Camera</option>
-        <option value="mast">Mast Camera</option>
-        <option value="chemcam">Chemistry and Camera Complex	</option>
-        <option value="mahli">Mars Hand Lens Imager</option>
-        <option value="mardi">Mars Descent Imager</option>
-      </>
-
-    }
-
 
 
     return (
@@ -129,7 +104,7 @@ class Search extends Component {
            <h2> Step 3. Pick a camera</h2><br/>
            <select className="select" name="camera" camera={this.state.camera} onChange={this.handleChange}>
             <option disabled selected value> -- select an option -- </option>
-             {options}
+             <CameraOptions rover={this.state.rover} />
            </select>
          </label>
         </form>
@@ -157,11 +132,3 @@ class Search extends Component {
 
 }
 export default Search
-
-// <input
-//   name="rover"
-//   type="text"
-//   placeholder="enter rover"
-//   value={this.state.rover}
-//   onChange={this.handleChange}
-// />
