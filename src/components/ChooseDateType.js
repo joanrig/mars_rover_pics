@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Form, Radio } from 'semantic-ui-react'
 import DateInput from './DateInput'
 
-class ChooseDate extends Component {
+class ChooseDateType extends Component {
 
   state = {}
   handleChange = (e, { value }) => this.setState({ value })
@@ -42,4 +42,4 @@ class ChooseDate extends Component {
   }
 }
 
-export default ChooseDate
+export default ChooseDateType

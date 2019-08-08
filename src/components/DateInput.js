@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Search from './Search'
+import { EventEmitter } from './events.js'
 
 
 
@@ -10,6 +10,13 @@ class DateInput extends Component {
     earth_date:""
   }
 
+  handleChange = (event) => {
+    const target = event.target;
+    const value = target.value.toLowerCase();
+    const name = target.name;
+    this.setState({[name]: value})
+
+  }
 
 
   render() {
@@ -18,17 +25,17 @@ class DateInput extends Component {
 
     if (this.props.dateType === "sol") {
       dateInput =
-      <label>
-        Enter sol:<br/>
-        <input
-          name="sol"
-          type="number"
-          placeholder="enter sol"
-          value={this.state.sol}
-          onChange={this.handleChange}
-          className="center"
-        />
-      </label>
+        <label>
+          Enter sol:<br/>
+          <input
+            name="sol"
+            type="number"
+            placeholder="enter sol"
+            value={this.state.sol}
+            onChange={this.handleChange}
+            className="center"
+          />
+        </label>
     } else if (this.props.dateType === "earth_date") {
       dateInput =
         <label>
@@ -46,7 +53,9 @@ class DateInput extends Component {
 
     return (
       <>
-        {dateInput}
+        <form onSubmit={(event) => EventEmitter.dispatch('getDateInput', event)}>
+          {dateInput}
+        </form>
       </>
     )
   }

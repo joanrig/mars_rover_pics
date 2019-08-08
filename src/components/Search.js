@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Container, Button, Grid, Card } from 'semantic-ui-react'
 import PhotoCard from './PhotoCard'
 import CameraOptions from './CameraOptions'
-import ChooseDate from './ChooseDate'
+import ChooseDateType from './ChooseDateType'
+import { EventEmitter } from './events.js'
 
 
 class Search extends Component {
@@ -16,6 +17,7 @@ class Search extends Component {
       earth_date: "",
       dateType: ""
     }
+    EventEmitter.subscribe('getDateInput', (event) => this.handleChange(event))
   }
 
   handleChange = (event) => {
@@ -77,7 +79,7 @@ class Search extends Component {
              </label>
             </Grid.Column>
             <Grid.Column>
-              <ChooseDate/>
+              <ChooseDateType />
             </Grid.Column>
             <Grid.Column>
               <label>
