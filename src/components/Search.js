@@ -11,7 +11,7 @@ class Search extends Component {
       photos: [],
       rover: "",
       camera: "",
-      sol: "1000",
+      sol: "",
       earth_date: ""
     }
   }
@@ -19,11 +19,8 @@ class Search extends Component {
 
   handleChange = (event) => {
     const target = event.target;
-    console.log('target is', target)
     const value = target.value.toLowerCase();
-    console.log('value is', value)
     const name = target.name;
-    console.log('name is', name)
     this.setState({[name]: value})
 
   }
@@ -32,9 +29,17 @@ class Search extends Component {
     const rover = this.state["rover"]
     const camera = this.state["camera"]
     const sol = this.state["sol"]
-    console.log(rover, camera, sol)
-    const url = 
-    console.log(url)
+    const earthDate = this.state["earth_date"]
+
+    let date = ""
+    if (this.state.sol > 0) {
+      date = `sol=${this.state.sol}`
+    } else if (this.state.earth_date){
+      date = `earth_date=${this.state.earth_date}`
+    }
+
+    console.log(rover, camera, sol, date, earthDate)
+    const url =
     fetch(url)
       .then(response => response.json())
       .then(photos => this.setState({photos: photos["photos"]}))
@@ -43,7 +48,35 @@ class Search extends Component {
 
 
   render(){
-    console.log('this.state.photos is', )
+    console.log('this.state.rover is', this.state.rover)
+
+
+
+    let options = ""
+    if (this.state.rover === "spirit" || this.state.rover === "opportunity") {
+      options =
+      <>
+        <option value="navcam">NavCam</option>
+        <option value="fhaz">Front Hazard Avoidance Camera</option>
+        <option value="rhaz">Rear Hazard Avoidance Camera</option>
+        <option value="pancam">Panoramic Camera</option>
+        <option value="minites">Miniature Thermal Emission Spectrometer (Mini-TES)</option>
+      </>
+    } else if (this.state.rover === "curiosity") {
+      options =
+      <>
+        <option value="navcam">NavCam</option>
+        <option value="fhaz">Front Hazard Avoidance Camera</option>
+        <option value="rhaz">Rear Hazard Avoidance Camera</option>
+        <option value="mast">Mast Camera</option>
+        <option value="chemcam">Chemistry and Camera Complex	</option>
+        <option value="mahli">Mars Hand Lens Imager</option>
+        <option value="mardi">Mars Descent Imager</option>
+      </>
+
+    }
+
+
 
     return (
       <Container className="center">
@@ -53,31 +86,44 @@ class Search extends Component {
         </h1>
 
         <form>
+          <label>
+           Pick a rover<br/>
+           <select name="rover" rover={this.state.rover} onChange={this.handleChange}>
+             <option value="curiosity">Curiosity</option>
+             <option value="spirit">Spirit</option>
+             <option value="opportunity">Opportunity</option>
+           </select>
+         </label>
+          <br/>
+          <br/>
+          <br/>
+          <h1>Enter earth date OR sol</h1>
           <input
-            name="rover"
+            name="earth_date"
             type="text"
-            placeholder="enter rover"
-            value={this.state.rover}
+            placeholder="enter earth date as YYYY-MM-DD"
+            value={this.state.earth_date}
             onChange={this.handleChange}
           />
           <br/>
           <br/>
           <br/>
-          <input
-            name="sol"
-            type="number"
-            placeholder="enter sol"
-            value={this.state.sol}
-            onChange={this.handleChange}
-          />
+          <label>
+            Enter sol:
+            <input
+              name="sol"
+              type="number"
+              placeholder="enter sol"
+              value={this.state.sol}
+              onChange={this.handleChange}
+            />
+          </label>
           <br/>
           <br/>
           <label>
            Pick a camera<br/>
            <select name="camera" camera={this.state.camera} onChange={this.handleChange}>
-             <option value="navcam">NavCam</option>
-             <option value="fhaz">Front Hazard Avoidance Camera</option>
-             <option value="rhaz">Rear Hazard Avoidance Camera</option>
+             {options}
            </select>
          </label>
         </form>
@@ -105,3 +151,11 @@ class Search extends Component {
 
 }
 export default Search
+
+// <input
+//   name="rover"
+//   type="text"
+//   placeholder="enter rover"
+//   value={this.state.rover}
+//   onChange={this.handleChange}
+// />
