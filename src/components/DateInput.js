@@ -25,30 +25,24 @@ class DateInput extends Component {
 
     if (this.props.dateType === "sol") {
       dateInput =
-        <label>
-          Enter sol:<br/>
           <input
+            className="center sol dates"
             name="sol"
             type="number"
             placeholder="enter sol"
             value={this.state.sol}
             onChange={(event) => EventEmitter.dispatch('getDateInput', event)}
-            className="center"
           />
-        </label>
     } else if (this.props.dateType === "earth_date") {
       dateInput =
-        <label>
-          Earth date:<br/>
         <input
+          className="center earth-date dates"
           name="earth_date"
           type="text"
           placeholder="YYYY-MM-DD"
           value={this.state.earth_date}
           onChange={(event) => EventEmitter.dispatch('getDateInput', event)}
-          className="center"
         />
-        </label>
     }
 
     return (

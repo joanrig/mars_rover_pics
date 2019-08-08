@@ -44,7 +44,7 @@ class Search extends Component {
     }
 
     console.log(rover, camera, sol, date, earthDate)
-    const url =  `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&camera=${camera}&page-1&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
+    const url =  
     fetch(url)
       .then(response => response.json())
       .then(photos => this.setState({photos: photos["photos"]}))
@@ -71,9 +71,9 @@ class Search extends Component {
           <Grid.Row>
             <Grid.Column>
               <label>
-               <h2> Step 1. Pick a rover</h2><br/>
+               <h2> Step 1 </h2><br/>
                <select className="select" name="rover" rover={this.state.rover} onChange={this.handleChange} >
-                 <option disabled selected value> -- select an option -- </option>
+                 <option disabled selected value> Pick a Rover </option>
                  <option value="curiosity">Curiosity</option>
                  <option value="spirit">Spirit</option>
                  <option value="opportunity">Opportunity</option>
@@ -85,9 +85,9 @@ class Search extends Component {
             </Grid.Column>
             <Grid.Column>
               <label>
-               <h2> Step 3. Pick a camera</h2><br/>
+               <h2> Step 3</h2><br/>
                <select className="select" name="camera" camera={this.state.camera} onChange={this.handleChange}>
-                <option disabled selected value> -- select an option -- </option>
+                <option disabled selected value> Pick a Camera -- </option>
                  <CameraOptions rover={this.state.rover} />
                </select>
              </label>

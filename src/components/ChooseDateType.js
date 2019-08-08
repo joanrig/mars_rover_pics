@@ -13,19 +13,7 @@ class ChooseDateType extends Component {
       <>
         <h2>Step 2. Pick a date</h2>
         <Form>
-          <Form.Field>
-            Search by <b>{this.state.value}</b>
-          </Form.Field>
           <Form.Field >
-            <Radio
-              label='earth date'
-              name='radioGroup'
-              value='earth_date'
-              checked={this.state.value === 'earth_date'}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
             <Radio
               label='sol'
               name='radioGroup'
@@ -33,6 +21,17 @@ class ChooseDateType extends Component {
               checked={this.state.value === 'sol'}
               onChange={this.handleChange}
             />
+            </Form.Field>
+            <Form.Field >
+            <Radio
+              label='earth date'
+              name='radioGroup'
+              value='earth_date'
+              checked={this.state.value === 'earth_date'}
+              onChange={this.handleChange}
+            />
+
+
           </Form.Field>
         </Form>
         <br/>

@@ -30,3 +30,15 @@ body {
   background-color:lightblue;
   height: 3em;
 }
+
+.dates {
+  height: 2.5em
+}
+
+.earth-date {
+  background-color:lightblue;
+}
+
+.sol {
+  background-color:lightgreen;
+}
