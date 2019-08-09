@@ -21,10 +21,9 @@ class Search extends Component {
   }
 
   handleChange = (event) => {
-    console.log(event)
-    const target = event.target;
-    const value = target.value.toLowerCase();
-    const name = target.name;
+    const target = event.target
+    const value = target.value
+    const name = target.name
     this.setState({[name]: value})
 
   }
@@ -41,7 +40,7 @@ class Search extends Component {
     }
 
     let url = ""
-
+  
 
     console.log(url)
     fetch(url)
