@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Button, Grid, Card } from 'semantic-ui-react'
+import { Container, Image, Button, Grid, Card } from 'semantic-ui-react'
 import PhotoCard from './PhotoCard'
 import CameraOptions from './CameraOptions'
 import ChooseDateType from './ChooseDateType'
@@ -41,7 +41,7 @@ class Search extends Component {
     }
 
     let url = ""
-  
+
 
     console.log(url)
     fetch(url)
@@ -50,49 +50,62 @@ class Search extends Component {
     }
 
 
-
   render(){
-    console.log('inside search render, this.state.photos is', this.state.photos)
     let photos = this.state.photos
 
-    let photoCount = ""
+    let results = ""
     if (photos.length > 0) {
-      photoCount = <h3>found {photos.length} photos</h3>
+      results =
+      <>
+        <h3>found {photos.length} photos</h3>
+        <p><em>seeing double? many of the images are stereographic, taken at the same time by two cameras that are slightly offset. <a href="https://www.instructables.com/id/How-to-view-stereo-graphic-images/">How to view them</a></em></p>
+      </>
+    } else if (photos.length === 0 && !this.state.rover) {
+        results = <Image src="https://mars.nasa.gov/system/news_items/main_images/8414_1_MAIN_mars-rover-opportunity-tracks-Sol3754B-pia18605-CROPPED.jpg" />
+    } else if (photos.length === 0 && this.state.rover === "curiosity"){
+        results =
+        <>
+          <Image src="https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA15952_hires.jpg" />
+          <br/>
+          <br/>
+          <h1>Curiosity's Route</h1>
+          <Image src="https://mars.nasa.gov/msl/imgs/2019/07/MSL_TraverseMap_Sol2480-full.jpg" />
+        </>
+    } else if (photos.length === 0 && (this.state.rover ===  "opportunity")){
+        results =
+        <>
+          <Image src="https://marsmobile.jpl.nasa.gov/imgs/mer/rover/mer-instruments-labels.jpg" />
+          <br/>
+          <br/>
+          <h1>Opportunity's Route</h1>
+          <div >
+            <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/MERB_878.jpg/700px-MERB_878.jpg" />
+          </div>
+        </>
+    } else if (photos.length === 0 && (this.state.rover ===  "spirit")){
+        results =
+        <>
+          <Image src="https://marsmobile.jpl.nasa.gov/imgs/mer/rover/mer-instruments-labels.jpg" />
+          <br/>
+          <br/>
+          <h1>Spirit's Route</h1>
+          <Image src="https://mars.nasa.gov/mer/mission/tm-spirit/images/MERA_Sol2518_1.jpg" />
+        </>
     }
 
-    // let number = ""
-    // if ( photos.length > 0  && photos.length < 50 ){
-    //   number = 1
-    // } else {
-    //   number = 2
-    // }
 
 
-
-
-
-//comes after you get the photos so useless for search
-    // let chosenRover = ""
-    // let landingDate = ""
-    // let launchDate = ""
-    // let maxDate = ""
-    // let maxSol = ""
-    // if(this.state.photos[0]){
-    //  chosenRover = this.state.photos[0]["rover"]
-    //  landingDate = chosenRover["landing_date"]
-    //  launchDate = chosenRover["launch_date"]
-    //  maxDate = chosenRover["max_date"]
-    //  maxSol = chosenRover["max_sol"]
-    //
-    // }
 
 
     return (
         <Container className="center search">
           <br/>
-          <h1>
+          <br/>
+          <br/>
+          <div className="massive">
             Search Mars Rover Photos
-          </h1>
+          </div>
+          <br/>
           <br/>
           <br/>
           <br/>
@@ -136,7 +149,11 @@ class Search extends Component {
 
           <Button size="large" color="brown" onClick={this.fetchPics} disabled={!this.state.camera}>Get Photos</Button>
           <br/>
-          {photoCount}
+          <br/>
+          <br/>
+          <div className="center">
+            {results}
+          </div>
           <br/>
           <br/>
 
@@ -158,3 +175,20 @@ class Search extends Component {
 
 }
 export default Search
+
+
+
+//comes after you get the photos so useless for search
+    // let chosenRover = ""
+    // let landingDate = ""
+    // let launchDate = ""
+    // let maxDate = ""
+    // let maxSol = ""
+    // if(this.state.photos[0]){
+    //  chosenRover = this.state.photos[0]["rover"]
+    //  landingDate = chosenRover["landing_date"]
+    //  launchDate = chosenRover["launch_date"]
+    //  maxDate = chosenRover["max_date"]
+    //  maxSol = chosenRover["max_sol"]
+    //
+    // }

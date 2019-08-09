@@ -10,7 +10,7 @@ const Home = () => {
 
       <br/>
       <h1>
-        Mars Rover Pics
+        Mars Rover Photo Finder
       </h1>
       <br/>
       <h3>click search to find photos from Spirit, Opportunity and Curiosity!</h3>
