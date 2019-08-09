@@ -5,11 +5,12 @@ import { Button } from 'semantic-ui-react'
 const NavBar = () => {
   return (
 
-    <div>
+    <div className="navbar">
+        <br/>
         <br/>
         <div className='navbar center'>
-          <Link to='/' ><Button size='massive' color='purple'>Home</Button></Link>
-          <Link to='/search' ><Button size='massive' color='pink'>Search</Button></Link>
+          <Link to='/' ><Button size='big' color='grey'>Home</Button></Link>
+          <Link to='/search' ><Button size='big' color='white'>Search</Button></Link>
           <br/>
           <br/>
         </div>

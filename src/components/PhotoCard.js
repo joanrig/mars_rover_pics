@@ -20,7 +20,7 @@ class PhotoCard extends Component {
     return (
     <>
       {notFound}
-      <Card>
+      <Card className="photoCard">
         <Image src={this.props["img_src"]} wrapped ui={false}  />
 
         <Card.Content >

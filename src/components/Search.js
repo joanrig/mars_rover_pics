@@ -41,11 +41,6 @@ class Search extends Component {
     }
 
     let url = ""
-  
-
-
-
-
 
 
     console.log(url)
@@ -57,7 +52,23 @@ class Search extends Component {
 
 
   render(){
-    console.log('inside search render, this.state is', this.state)
+    console.log('inside search render, this.state.photos is', this.state.photos)
+    let photos = this.state.photos
+
+    let photoCount = ""
+    if (photos.length > 0) {
+      photoCount = <h3>found {photos.length} photos</h3>
+    }
+
+    // let number = ""
+    // if ( photos.length > 0  && photos.length < 50 ){
+    //   number = 1
+    // } else {
+    //   number = 2
+    // }
+
+
+
 
 
 //comes after you get the photos so useless for search
@@ -76,64 +87,69 @@ class Search extends Component {
     // }
 
 
-
-
     return (
-        <Container className="center">
-        <br/>
-        <h1>
-          Search Mars Rover Photos
-        </h1>
-        <br/>
-        <br/>
-        <br/>
+        <Container className="center search">
+          <br/>
+          <h1>
+            Search Mars Rover Photos
+          </h1>
+          <br/>
+          <br/>
+          <br/>
 
-        <form>
-        <Grid columns={3} divided>
-          <Grid.Row>
-            <Grid.Column>
-              <label>
-               <h2> Step 1 </h2><br/>
-               <select className="select" name="rover" rover={this.state.rover} onChange={this.handleChange} >
-                 <option disabled selected value> Pick a Rover </option>
-                 <option value="curiosity">Curiosity</option>
-                 <option value="spirit">Spirit</option>
-                 <option value="opportunity">Opportunity</option>
-               </select>
-             </label>
-            </Grid.Column>
-            <Grid.Column>
-              <ChooseDateType />
-            </Grid.Column>
-            <Grid.Column>
-              <label>
-               <h2> Step 3</h2><br/>
-               <select className="select" name="camera" camera={this.state.camera} onChange={this.handleChange}>
-                <option disabled selected value> Pick a Camera -- </option>
-                 <CameraOptions rover={this.state.rover} />
-               </select>
-             </label>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+          <form>
+          <Grid columns={3} divided>
+            <Grid.Row>
+              <Grid.Column>
+                <label>
+                 <h2> Step 1 </h2><br/>
+                 <select className="select" name="rover" rover={this.state.rover} onChange={this.handleChange} >
+                   <option disabled selected value> Pick a Rover </option>
+                   <option value="curiosity">Curiosity</option>
+                   <option value="spirit">Spirit</option>
+                   <option value="opportunity">Opportunity</option>
+                 </select>
+               </label>
+              </Grid.Column>
+              <Grid.Column >
+                <ChooseDateType />
+              </Grid.Column>
+              <Grid.Column>
+                <label>
+                 <h2> Step 3</h2><br/>
+                 <select className="select" name="camera" camera={this.state.camera} onChange={this.handleChange}>
+                  <option disabled selected value> Pick a Camera </option>
+                   <CameraOptions rover={this.state.rover} />
+                 </select>
+               </label>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
 
-        </form>
-        <br/>
-        <br/>
-        <hr/>
-        <br/>
+          </form>
+          <br/>
+          <br/>
+          <hr/>
 
-        <Button size="large" color="grey" onClick={this.fetchPics}>Get Photos</Button>
 
-        <br/>
-        <br/>
+          <br/>
 
-        <Card.Group itemsPerRow={2}>
-          {this.state.photos.map(photo =>
-            <PhotoCard
-              key={photo["id"]} {...photo} />
-            )}
-        </Card.Group>
+          <Button size="large" color="grey" onClick={this.fetchPics} disabled={!this.state.camera}>Get Photos</Button>
+          <br/>
+          {photoCount}
+          <br/>
+          <br/>
+
+          <Card.Group itemsPerRow={2}>
+            {this.state.photos.map(photo =>
+              <PhotoCard
+                key={photo["id"]} {...photo} />
+              )}
+          </Card.Group>
+          <br/>
+          <br/>
+          <br/>
+
       </Container>
     )
 

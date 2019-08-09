@@ -1,17 +1,29 @@
 .App {
   text-align: center;
+  background-color: rgb(216,175,156)
+
+}
+body {
+  background-image: linear-gradient(to right, rgba(181,125,78,0), rgba(181,125,78,0.75));
+  /* background-image: linear-gradient(to right, rgba(103,103,103,0), rgba(103,103,103,0.75)); */
+  /* background-image: linear-gradient(to right, white,grey,tan);  */
 }
 
-body {
-  background:white;
-}
+
 
 .center {
   text-align: center;
 }
 
-.ui.radio> {
-  color:white;
+/* .home, .navbar
+  background-color: rgb(216,175,156)
+} */
+
+
+
+.radio {
+  background-image: linear-gradient(to right, rgba(119,119,119,0), rgba(119,119,119,0));
+
 }
 
 .scroll {
@@ -25,21 +37,18 @@ body {
 
 .select {
   text-align-last:center;
-  font-size: 1em;
+  font-size: 1.3em;
   color:black;
-  background-color:lightblue;
+  background-color: rgba(167,97,47,0.5);
   height: 2em;
-  width: 15em;
+  width: 18em;
 }
 
 .dates {
   height: 2em
 }
 
-.earth-date {
-  background-color:lightblue;
-}
-
-.sol {
-  background-color:lightgreen;
+.earth-date, .sol {
+  background-color: rgba(112,62,29,0.3);
+  font-size: 1.3em;
 }
