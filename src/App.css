@@ -17,10 +17,19 @@ p {
   font-size: 5em;
 }
 
+.big {
+  font-size: 3.5em;
+}
+
 .center {
   text-align: center;
   display: block;
   margin: 0 auto;
+}
+
+.intro {
+  text-align: left;
+  font-size: 1.2em;
 }
 
 .roverGraphic {

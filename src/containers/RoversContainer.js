@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Image } from 'semantic-ui-react'
 import rovergraphic from './rovergraphic.png'
+import DrillingVideo from '../components/DrillingVideo'
 
 
 class RoversContainer extends Component {
@@ -15,12 +16,12 @@ class RoversContainer extends Component {
   render(){
 
     let intro =
-    <>
+    <div className="intro">
       <br/>
       <br/>
       <br/>
       <br/>
-      <div className="massive">One red planet, four rovers</div>
+      <div className="massive center">One red planet, four rovers</div>
       <br/>
       <br/>
       <br/>
@@ -30,24 +31,17 @@ class RoversContainer extends Component {
       <p>
         (<em>Note: this site is powered by NASA's Mars Rover API; It does not include photos from Sojourner, but you can <a href="https://www.nasa.gov/mission_pages/mars-pathfinder">find some here.</a></em>)
       </p>
+      <p>
+        So what are the photos for? Scientists on earth meet daily to review the latest photos and use them to decide where to drive and where to drill. It's like operating a remote control car from millions of miles away (yikes!). When the scientists give a command, depending on conditions, it takes three to 22 minutes to reach the Rover, which then executes the command and sends back data on how things went. Imagine driving a remote control car and having to wait 44 minutes before knowing if your last command made it crash!
+      </p>
       <br/>
-      <h1> Fast Facts </h1>
+      <br/>
+      <h1 className="center"> Fast Facts </h1>
+      <br/>
       <p>
         Here is a graphical overview of the four Mars Rovers, comparing many of their attributes, including mission, size, speed and intended lifespan.
       </p>
-    </>
-
-      const drillingVideo =
-      <iframe
-        title="unique"
-        width="1280"
-        height="720"
-        src="https://www.youtube.com/embed/B5TWtxRvydE"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-
+    </div>
 
     return (
     <>
@@ -63,13 +57,15 @@ class RoversContainer extends Component {
       <br/>
       <br/>
       <br/>
+      <br/>
       <div className="center">
         <br/>
-        <h1>How does a robot get and study a rock sample?</h1>
+        <br/>
+        <div className="big">Robotic Geologist at Work</div>
         <br/>
         <br/>
-        {drillingVideo}
-
+        <br/>
+        <DrillingVideo />
       </div>
 
     </>

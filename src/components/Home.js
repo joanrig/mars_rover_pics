@@ -9,11 +9,13 @@ const Home = () => {
     <div className="home center" >
 
       <br/>
-      <h1>
-        Mars Rover Photo Finder
-      </h1>
       <br/>
-      <h3>click search to find photos from Spirit, Opportunity and Curiosity!</h3>
+      <br/>
+      <div className="massive">
+        Mars Rover Photo Finder
+      </div>
+      <br/>
+      <h4>click search to find photos from Spirit, Opportunity and Curiosity!</h4>
       <br/>
       <br/>
       <br/>

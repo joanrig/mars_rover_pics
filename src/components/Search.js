@@ -94,9 +94,6 @@ class Search extends Component {
     }
 
 
-
-
-
     return (
         <Container className="center search">
           <br/>
@@ -175,20 +172,3 @@ class Search extends Component {
 
 }
 export default Search
-
-
-
-//comes after you get the photos so useless for search
-    // let chosenRover = ""
-    // let landingDate = ""
-    // let launchDate = ""
-    // let maxDate = ""
-    // let maxSol = ""
-    // if(this.state.photos[0]){
-    //  chosenRover = this.state.photos[0]["rover"]
-    //  landingDate = chosenRover["landing_date"]
-    //  launchDate = chosenRover["launch_date"]
-    //  maxDate = chosenRover["max_date"]
-    //  maxSol = chosenRover["max_sol"]
-    //
-    // }
