@@ -13,6 +13,7 @@ class ChooseDateType extends Component {
       <>
         <h2>Step 2</h2>
         <h3>Pick a date</h3>
+        <h4>Hint: Look at the route below to see the rover's location by sol</h4>
         <Form>
           <Form.Field className="radio">
             <Radio

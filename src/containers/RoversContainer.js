@@ -19,12 +19,9 @@ class RoversContainer extends Component {
     this.setState({show: event.target.name})
   }
 
-
-
   render(){
 
     let onDisplay = ""
-
     if (this.state.show === "chart"){
       onDisplay =
       <>
@@ -33,16 +30,16 @@ class RoversContainer extends Component {
       </>
     } else if (this.state.show === "drill"){
       onDisplay =
-        <div className="center">
-          <br/>
-          <DrillingVideo />
-        </div>
-      } else if (this.state.show === "terror"){
-        onDisplay =
-        <>
-          <SevenMinutesVideo />
-        </>
-      }
+      <div className="center">
+        <br/>
+        <DrillingVideo />
+      </div>
+    } else if (this.state.show === "terror"){
+      onDisplay =
+      <>
+        <SevenMinutesVideo />
+      </>
+    }
 
     return (
     <>

@@ -32,8 +32,6 @@ class CameraOptions extends PureComponent  {
 
     }
 
-
-
     return (
       <>
         {options}

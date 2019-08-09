@@ -5,11 +5,6 @@ import { Card, Image } from 'semantic-ui-react'
 
 
 class PhotoCard extends Component {
-  constructor(props) {
-    super(props)
-
-    console.log('this.props is', this.props)
-  }
 
   render(){
     let notFound = ""
