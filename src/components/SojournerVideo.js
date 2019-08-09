@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const drillingVideo = () => {
+const sojournerVideo = () => {
 
   return (
     <div
@@ -14,7 +14,7 @@ const drillingVideo = () => {
       }}
     >
       <iframe
-        title="drilling_video"
+        title="sojourner_video"
         style={{
           position: "absolute",
           top: 0,
@@ -22,11 +22,11 @@ const drillingVideo = () => {
           width: "100%",
           height: "100%"
         }}
-        src={`https://www.youtube.com/embed/B5TWtxRvydE`}
+        src={`https://www.youtube.com/embed/zA3qZR_T-S8`}
         frameBorder="0"
       />
     </div>
   );
 };
 
-export default drillingVideo
+export default sojournerVideo

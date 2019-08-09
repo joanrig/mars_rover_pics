@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const sevenMinutes = () => {
+const spiritVideo = () => {
 
   return (
     <div
@@ -14,7 +14,7 @@ const sevenMinutes = () => {
       }}
     >
       <iframe
-        title="seven_minutes_video"
+        title="spirit_video"
         style={{
           position: "absolute",
           top: 0,
@@ -22,11 +22,11 @@ const sevenMinutes = () => {
           width: "100%",
           height: "100%"
         }}
-        src={`https://www.youtube.com/embed/Ki_Af_o9Q9s`}
+        src={`https://www.youtube.com/embed/txLpd7tQwuY`}
         frameBorder="0"
       />
     </div>
   );
 };
 
-export default sevenMinutes
+export default spiritVideo
