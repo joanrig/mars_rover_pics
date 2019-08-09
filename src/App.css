@@ -10,15 +10,15 @@ body {
 }
 
 p {
-  font-size: 1.1em;
+  font-size: 1.1vw;
 }
 
 .massive {
-  font-size: 5em;
+  font-size:4vw;
 }
 
 .big {
-  font-size: 3.5em;
+  font-size: 3vw;
 }
 
 .center {

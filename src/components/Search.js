@@ -40,7 +40,7 @@ class Search extends Component {
     }
 
     let url = ""
-
+  
 
     console.log(url)
     fetch(url)
