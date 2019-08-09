@@ -9,13 +9,14 @@ const NavBar = () => {
         <br/>
         <br/>
         <div className='navbar center'>
-          <Link to='/' ><Button size='big' color='grey'>Home</Button></Link>
-          <Link to='/search' ><Button size='big' color='white'>Search</Button></Link>
+          <Link to='/' ><Button size='big' color='orange'>Home</Button></Link>
+          <Link to='/search' ><Button size='big' color='brown'>Search</Button></Link>
+          <Link to='/rovers' ><Button size='big' color='black'>Rovers</Button></Link>
           <br/>
           <br/>
         </div>
     </div>
-  );
-};
+  )
+}
 
 export default NavBar;

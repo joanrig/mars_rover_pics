@@ -9,10 +9,23 @@ body {
   /* background-image: linear-gradient(to right, white,grey,tan);  */
 }
 
+p {
+  font-size: 1.1em;
+}
 
+.massive {
+  font-size: 5em;
+}
 
 .center {
   text-align: center;
+}
+
+.roverGraphic {
+  -webkit-user-select: none;
+  cursor: zoom-in;
+  width: 1926px;
+  height: 1232px;
 }
 
 /* .home, .navbar

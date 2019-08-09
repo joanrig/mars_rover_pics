@@ -41,7 +41,7 @@ class Search extends Component {
     }
 
     let url = ""
-
+  
 
     console.log(url)
     fetch(url)
@@ -134,7 +134,7 @@ class Search extends Component {
 
           <br/>
 
-          <Button size="large" color="grey" onClick={this.fetchPics} disabled={!this.state.camera}>Get Photos</Button>
+          <Button size="large" color="brown" onClick={this.fetchPics} disabled={!this.state.camera}>Get Photos</Button>
           <br/>
           {photoCount}
           <br/>
