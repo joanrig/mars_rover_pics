@@ -52,14 +52,14 @@ class RoversContainer extends Component {
         <Button color="orange" name="sojourner" onClick={this.handleClick} >
           Sojourner
         </Button>
-        <Button color="blue" name="terror" onClick={this.handleClick} >
-          Curiosity
-        </Button>
         <Button color="grey" name="spirit" onClick={this.handleClick} >
           Spirit
         </Button>
         <Button className="video" color="brown" name="opportunity" onClick={this.handleClick} >
           Opportunity
+        </Button>
+        <Button color="blue" name="terror" onClick={this.handleClick} >
+          Curiosity
         </Button>
 
         <br/>

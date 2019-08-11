@@ -12,6 +12,7 @@ const NavBar = () => {
           <Link to='/' ><Button size='big' color='orange'>Home</Button></Link>
           <Link to='/search' ><Button size='big' color='brown'>Search</Button></Link>
           <Link to='/rovers' ><Button size='big' color='black'>Rovers</Button></Link>
+          <Link to='/about' ><Button size='big' color='green'>About</Button></Link>
           <br/>
           <br/>
         </div>

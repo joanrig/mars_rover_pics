@@ -21,7 +21,7 @@ const Home = () => {
       <br/>
       <br/>
       <br/>
-      <Image src="https://mars.nasa.gov/system/resources/detail_files/8727_PIA02406-full2.jpg"/>
+      <Image className="ui fluid image" src="https://mars.nasa.gov/system/resources/detail_files/8727_PIA02406-full2.jpg"/>
     </div>
   )
 }

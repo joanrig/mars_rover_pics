@@ -117,9 +117,12 @@ class Search extends Component {
     }
     if (photos.length === 0 && !rover) {
         roverPic = <Image className="ui fluid image" src="https://mars.nasa.gov/system/news_items/main_images/8414_1_MAIN_mars-rover-opportunity-tracks-Sol3754B-pia18605-CROPPED.jpg" />
+
+
+
     }
 
-    // after step 1 input, show step 2
+    after step 1 input, show step 2
     let stepTwo = ""
     if (rover){
       console.log(this.state)
@@ -131,7 +134,7 @@ class Search extends Component {
       stepTwo = <ChooseDateType />
     }
 
-    // after step 2 input, show cameras pic and step 3
+    after step 2 input, show cameras pic and step 3
     let date = this.state.sol || this.state.earth_date
     let stepThree = ""
     if (date) {

@@ -23,7 +23,7 @@ const Intro = () => {
         So what are the photos for? Scientists on earth meet daily to review the latest photos, learn what they can from the images, and then use them to decide where to drive and where to drill for rock samples. (The rovers use onboard scientific instruments to study the samples and send data back to earth).
       </p>
       <p>
-        It's like operating a remote control car from millions of miles away (yikes!). When the scientists give a command, depending on the how the planets and satellites line up, it takes at leat three, and possibly to 22 minutes to reach the Rover. After executing the command, the rover and sends back data on how things went. Imagine driving a remote control car and having to wait 44 minutes before knowing if your last command made it crash! No wonder Rovers have a speed limit of one tenth of one mile per hour. (See chart below).
+        It's like operating a remote control car from millions of miles away (yikes!). When the scientists give a command, depending on the how the planets and communication satellites line up, it takes at least three, and as long as 22 minutes to reach the Rover. After executing the command, the rover and sends back data on how things went (another   three to 22 minutes). Imagine driving a remote control car and having to wait 44 minutes before knowing if your last command made it crash! No wonder Rovers have a speed limit of one tenth of one mile per hour. (See chart below).
       </p>
       <br/>
       <br/>
