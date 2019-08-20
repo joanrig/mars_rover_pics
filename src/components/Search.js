@@ -57,6 +57,8 @@ class Search extends Component {
     this.setState({show: event.target.name})
   }
 
+  debugger
+
   render(){
 
     let photos = this.state.photos

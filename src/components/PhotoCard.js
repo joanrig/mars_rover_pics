@@ -12,12 +12,13 @@ class PhotoCard extends Component {
       notFound = "No photos found. Please try again."
     }
 
+    let image_url = this.props["img_src"]
+
     return (
     <>
       {notFound}
       <Card className="photoCard">
-        <Image src={this.props["img_src"]} wrapped ui={false}  />
-
+          <Image src={image_url} wrapped ui={false}  /> />
         <Card.Content >
           <Card.Header >
             <h1>{this.props["rover"]["name"]}</h1>
@@ -28,6 +29,7 @@ class PhotoCard extends Component {
         <Card.Content extra >
           <h3>Sol {this.props["sol"]}</h3>
           <h5>Earth Date {this.props["earth_date"]}</h5>
+          <a href={image_url}>closer look</a>
         </Card.Content>
       </Card>
     </>

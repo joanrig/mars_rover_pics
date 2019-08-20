@@ -16,7 +16,7 @@ class Search extends Component {
       sol: "",
       earth_date: "",
       dateType: "",
-      show: "route",
+      show: "cameras",
       stepThree: ""
     }
     EventEmitter.subscribe('getDateInput', (event) => this.handleChange(event))
@@ -59,6 +59,7 @@ class Search extends Component {
 
   render(){
 
+    //variables for show route/ camera pics on rover choice
     let photos = this.state.photos
     let rover = this.state.rover
     let show = this.state.show
@@ -93,9 +94,43 @@ class Search extends Component {
       }
     }
 
+    // after step 1 input, show step 2
+    let buttons = ""
+    let stepTwo = ""
+    if (rover){
+      stepTwo = <ChooseDateType />
+      //add buttons to roverPic
+      buttons =
+      <>
+        <Button name="route" onClick={this.handleClick}> Route </Button>
+        <Button name="cameras" onClick={this.handleClick}> Cameras </Button>
+      </>
+    }
+
+    // after step 2 input, show step 3 and roverpic => cameras
+    let date = this.state.sol || this.state.earth_date
+    let stepThree = ""
+    if (date) {
+      debugger
+      stepThree =
+      <>
+        <label>
+         <h2> Step 3</h2><br/>
+         <select className="select" name="camera" camera={this.state.camera} onChange={this.handleChange}>
+          <option disabled selected value> Pick a Camera </option>
+           <CameraOptions rover={this.state.rover} />
+         </select>
+       </label>
+       <h4>Which cameras are which? <br/>
+       Click the "cameras" button below to find out.</h4>
+      </>
+      this.setState(prevState => ({
+        show: !prevState.show
+      }))
+    }
+
     //show get photos button after inputs for rover & camera
     let results = ""
-    let buttons = ""
     let getPhotosButton = ""
     if (rover && this.state.camera) {
       getPhotosButton =  <Button size="large" color="brown" onClick={this.fetchPics} disabled={!this.state.camera}>Get Photos</Button>
@@ -117,44 +152,7 @@ class Search extends Component {
     }
     if (photos.length === 0 && !rover) {
         roverPic = <Image className="ui fluid image" src="https://mars.nasa.gov/system/news_items/main_images/8414_1_MAIN_mars-rover-opportunity-tracks-Sol3754B-pia18605-CROPPED.jpg" />
-
-
-
     }
-
-    after step 1 input, show step 2
-    let stepTwo = ""
-    if (rover){
-      console.log(this.state)
-      buttons =
-      <>
-        <Button name="route" onClick={this.handleClick}> Route </Button>
-        <Button name="cameras" onClick={this.handleClick}> Cameras </Button>
-      </>
-      stepTwo = <ChooseDateType />
-    }
-
-    after step 2 input, show cameras pic and step 3
-    let date = this.state.sol || this.state.earth_date
-    let stepThree = ""
-    if (date) {
-      stepThree =
-      <>
-        <label>
-         <h2> Step 3</h2><br/>
-         <select className="select" name="camera" camera={this.state.camera} onChange={this.handleChange}>
-          <option disabled selected value> Pick a Camera </option>
-           <CameraOptions rover={this.state.rover} />
-         </select>
-       </label>
-       <h4>Which cameras are which? <br/>
-       Click the "cameras" button below to find out.</h4>
-      </>
-    }
-
-
-
-
 
     return (
         <Container className="center search">
