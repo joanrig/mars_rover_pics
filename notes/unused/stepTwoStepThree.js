@@ -122,7 +122,7 @@ class Search extends Component {
 
     }
 
-    after step 1 input, show step 2
+    // after step 1 input, show step 2
     let stepTwo = ""
     if (rover){
       console.log(this.state)
@@ -134,7 +134,7 @@ class Search extends Component {
       stepTwo = <ChooseDateType />
     }
 
-    after step 2 input, show cameras pic and step 3
+    // after step 2 input, show cameras pic and step 3
     let date = this.state.sol || this.state.earth_date
     let stepThree = ""
     if (date) {
