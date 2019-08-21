@@ -11,6 +11,8 @@ import { connect } from 'react-redux'
 
 class Search extends Component {
 
+  handleSubmit
+
 
   render(){
 
@@ -52,8 +54,6 @@ class Search extends Component {
     }
 
 
-
-
     return (
         <Container className="center search">
           <br/>
@@ -67,11 +67,12 @@ class Search extends Component {
           <br/>
           <br/>
 
-          <form>
           <Grid columns={3} divided>
             <Grid.Row>
               <Grid.Column>
+
                 <ChooseRover />
+                
               </Grid.Column>
               <Grid.Column >
                 {stepTwo}
@@ -82,7 +83,6 @@ class Search extends Component {
             </Grid.Row>
           </Grid>
 
-          </form>
           <br/>
           <br/>
           <hr/>

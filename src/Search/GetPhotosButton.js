@@ -14,7 +14,7 @@ class GetPhotosButton extends Component {
     this.setState({[name]: value})
   }
 
-  getPics = () => {
+  setURL = () => {
     let rover = this.props["rover"]
     let camera = this.props["camera"]
     let date = this.props["date"]
@@ -33,7 +33,7 @@ class GetPhotosButton extends Component {
   render() {
 
     return (
-      <Button size="large" color="brown" onClick={this.getPics} disabled={!this.props.camera}>Get Photos</Button>
+      <Button size="large" color="brown" onClick={this.setURL} disabled={!this.props.camera}>Get Photos</Button>
       )
     }
   }

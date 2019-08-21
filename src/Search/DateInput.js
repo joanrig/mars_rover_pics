@@ -14,21 +14,17 @@ class DateInput extends Component {
 
   handleSolInput = (event) => this.handleChange(event, 'sol')
   handleEarthDateInput = (event) => this.handleChange(event, 'earthDate')
-    // debugger
-    // const value = event.target.value
-    // const name = event.target.name
-    // this.setState({[name]: value})
 
-
-  handleChange(event, type) {
+  //without async it does not capture last character of input
+  handleChange = async function(event, type) {
     let newState = {};
     newState[type] = event.target.value;
-    this.setState(newState);
+    await this.setState(newState)
+    console.log(this.state)
   }
 
 
-  handleSubmit = () => {
-    debugger
+  handleSubmit = (event) => {
     let date
     if (this.state.sol > 0) {
       date = `sol=${this.state.sol}`
@@ -69,8 +65,7 @@ class DateInput extends Component {
 
     return (
       <>
-        <form
-          onChange={this.handleInput}
+        <form id="getDate"
           onSubmit={this.handleSubmit}>
           {dateInput}
         </form>

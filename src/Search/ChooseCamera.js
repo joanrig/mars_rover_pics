@@ -13,12 +13,18 @@ class ChooseCamera extends Component {
     }
   }
 
+
   handleSelect = (event) => {
     this.props.setCamera(event.target.value)
   }
 
 
+
   render() {
+
+    console.log('inside of CameraChooser, here comes the dropdown menu')
+
+
 
 
     return (
