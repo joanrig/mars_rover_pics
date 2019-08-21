@@ -1,19 +1,15 @@
-import React, {Component} from 'react'
-import { connect } from 'react-redux'
-import { Image } from 'semantic-ui-react'
-import { setDate } from './SearchActions'
+import React, { PureComponent } from 'react'
+import { Image, Button } from 'semantic-ui-react'
 
 
-class RoverPic extends Component {
+class RoverPic extends PureComponent {
   constructor(props){
     super(props)
 
     this.state =  {
       show:"route"
     }
-
   }
-
 
 
   render() {
@@ -51,16 +47,28 @@ class RoverPic extends Component {
       }
     }
 
+    if (photos.length === 0 && !rover) {
+        roverPic = <Image className="ui fluid image" src="https://mars.nasa.gov/system/news_items/main_images/8414_1_MAIN_mars-rover-opportunity-tracks-Sol3754B-pia18605-CROPPED.jpg" />
+    }
+
+    let buttons
+    if (rover){
+      buttons =
+      <>
+        <Button name="route" onClick={this.handleClick}> Route </Button>
+        <Button name="cameras" onClick={this.handleClick}> Cameras </Button>
+      </>
+    }
+
     return (
       <>
-        <form
-          onChange={this.handleChange}
-          onSubmit={this.handleSubmit}>
-          {dateInput}
-        </form>
+        {buttons}
+        {roverPic}
+
       </>
     )
   }
 }
 
-export default connect(null, { setDate })(RoverPic)
+
+export default RoverPic
