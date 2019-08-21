@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Button, Grid, Card, Loader } from 'semantic-ui-react'
+import { Container, Button, Grid, Card } from 'semantic-ui-react'
 import PhotoCard from './PhotoCard'
 import ChooseDateType from './ChooseDateType'
 import ChooseRover from './ChooseRover'
 import ChooseCamera from './ChooseCamera'
 import RoverPic from './RoverPic'
+import NoPhotosFound from './NoPhotosFound'
 import ResultsBanner from './ResultsBanner'
 // import ErrorMessage from './ErrorMessage'
 import { EventEmitter } from './events.js'
@@ -30,6 +31,13 @@ class Search extends Component {
     EventEmitter.subscribe('getCameraInput', (event) => this.handleChange(event))
   }
 
+  handleChange = (event) => {
+    const target = event.target
+    const value = target.value
+    const name = target.name
+    this.setState({[name]: value})
+  }
+
   componentDidMount() {
      window.addEventListener('resize', this.handleWindowSizeChange)
    }
@@ -41,13 +49,6 @@ class Search extends Component {
   handleWindowSizeChange = () => {
      this.setState({ width: window.innerWidth })
    }
-
-  handleChange = (event) => {
-    const target = event.target
-    const value = target.value
-    const name = target.name
-    this.setState({[name]: value})
-  }
 
   fetchPics = () => {
     this.setState({ getPhotosButtonClicked: true })
@@ -133,22 +134,17 @@ class Search extends Component {
       </>
     }
 
-    //error message replaces getPhotosButton
-    let noResults
+
+    let resultsMessage
     if (this.state.getPhotosButtonClicked && photos.length === 0 ){
-      noResults = <Loader active inline />
-    } else if (photos.length > 0) {
-      buttons = ""
+      resultsMessage =
+      <NoPhotosFound />
     }
-
-
-
 
     return (
         <Container className="center search">
           <br/>
           <br/>
-
           <div className="massive">
             Search Mars Rover Photos
           </div>
@@ -156,7 +152,6 @@ class Search extends Component {
           <br/>
           <br/>
           <br/>
-
           <form>
             {stepOne}
             <br/>
@@ -175,17 +170,17 @@ class Search extends Component {
           </form>
           <br/>
           <hr/>
-          {noResults}
+          {resultsMessage}
           <br/>
           {getPhotosButton}
           <br/>
           <br/>
           <div className="center">
-            {results}
+          {results}
           <br/>
           <br/>
-            {buttons}
-            <RoverPic photos={this.state.photos} rover={this.state.rover} show={this.state.show}/>
+          {buttons}
+          <RoverPic photos={this.state.photos} rover={this.state.rover} show={this.state.show}/>
           </div>
           <br/>
           <br/>
