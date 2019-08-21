@@ -3,8 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar'
 import Home from './components/Home'
-import Search from './components/Search'
-import RoversContainer from './Rovers/RoversContainer'
+import Search from './components/Search/Search'
+import RoversContainer from './components/Rovers/RoversContainer'
 import About from './components/About'
 
 
