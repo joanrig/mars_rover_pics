@@ -33,6 +33,7 @@ class DateInput extends Component {
             value={this.state.sol}
             onChange={(event) => EventEmitter.dispatch('getDateInput', event)}
           />
+          
     } else if (this.props.dateType === "earth_date") {
       dateInput =
         <input

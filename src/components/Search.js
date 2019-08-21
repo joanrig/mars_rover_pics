@@ -62,7 +62,7 @@ class Search extends Component {
     let photos = this.state.photos
     let rover = this.state.rover
     let show = this.state.show
-    let roverPic = ""
+    let roverPic
 
     let curiosityCams = <Image src="https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA15952_hires.jpg" />
     let curiosityRoute = <Image src="https://mars.nasa.gov/msl/imgs/2019/07/MSL_TraverseMap_Sol2480-full.jpg" />
@@ -94,9 +94,9 @@ class Search extends Component {
     }
 
     //show get photos button after inputs for rover & camera
-    let results = ""
-    let buttons = ""
-    let getPhotosButton = ""
+    let results
+    let buttons
+    let getPhotosButton
     if (rover && this.state.camera) {
       getPhotosButton =  <Button size="large" color="brown" onClick={this.fetchPics} disabled={!this.state.camera}>Get Photos</Button>
     }
@@ -120,7 +120,7 @@ class Search extends Component {
     }
 
     // after step 1 input, show step 2
-    let stepTwo = ""
+    let stepTwo
     if (rover){
       console.log(this.state)
       buttons =
@@ -133,7 +133,7 @@ class Search extends Component {
 
     // after step 2 input, show cameras pic and step 3
     let date = this.state.sol || this.state.earth_date
-    let stepThree = ""
+    let stepThree
     if (date) {
       stepThree =
       <>
