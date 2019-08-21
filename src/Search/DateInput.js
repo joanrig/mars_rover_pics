@@ -9,17 +9,26 @@ class DateInput extends Component {
     sol:"",
     earthDate:"",
     dateType: "",
-    date: ""
   }
 
-  handleChange = (event) => {
-    const target = event.target
-    const value = target.value
-    const name = target.name
-    this.setState({[name]: value})
+
+  handleSolInput = (event) => this.handleChange(event, 'sol')
+  handleEarthDateInput = (event) => this.handleChange(event, 'earthDate')
+    // debugger
+    // const value = event.target.value
+    // const name = event.target.name
+    // this.setState({[name]: value})
+
+
+  handleChange(event, type) {
+    let newState = {};
+    newState[type] = event.target.value;
+    this.setState(newState);
   }
+
 
   handleSubmit = () => {
+    debugger
     let date
     if (this.state.sol > 0) {
       date = `sol=${this.state.sol}`
@@ -43,7 +52,7 @@ class DateInput extends Component {
             type="number"
             placeholder="enter sol"
             value={this.state.sol}
-            onChange={this.handleChange}
+            onChange={this.handleSolInput}
           />
 
     } else if (this.props.dateType === "earthDate") {
@@ -54,14 +63,14 @@ class DateInput extends Component {
           type="text"
           placeholder="YYYY-MM-DD"
           value={this.state.earthDate}
-          onChange={this.handleChange}
+          onChange={this.handleEarthDateInput}
         />
     }
 
     return (
       <>
         <form
-          onChange={this.handleChange}
+          onChange={this.handleInput}
           onSubmit={this.handleSubmit}>
           {dateInput}
         </form>

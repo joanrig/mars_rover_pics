@@ -18,10 +18,7 @@ class ChooseCamera extends Component {
   }
 
 
-
-
   render() {
-
 
 
     return (

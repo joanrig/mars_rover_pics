@@ -8,6 +8,7 @@ export function setRover(rover){
 }
 
 export function setDate(date){
+  debugger
   return (dispatch) => {
     dispatch({ type: "SET_DATE", date })
   }
