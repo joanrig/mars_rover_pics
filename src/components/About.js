@@ -103,9 +103,10 @@ class About extends PureComponent {
             </p>
             <br/>
 
-            <h2>Thanks to NASA and Chris Cerami!</h2>
+            <h2>Thanks to ...</h2>
+            <Image src="https://image.flaticon.com/icons/svg/944/944255.svg" className="favicon-credit"/>
             <p>
-              I couldn't have made this app without the data from NASA, which hosts several APIs to serve up data based on the hard work of its scientists and engineers. This app is based on the  <a href="https://api.nasa.gov/api.html#MarsPhotos">Mars Rover Photos API</a>. Note: it is maintained for NASA by Boston programmer <a href="https://github.com/chrisccerami/mars-photo-api">Chris Cerami.</a> Thank you, Chris!
+              I couldn't have made this app without the data from NASA, which hosts several APIs to serve up data based on the hard work of its scientists and engineers. This app is based on the <a href="https://api.nasa.gov/api.html#MarsPhotos">Mars Rover Photos API</a>. Note: it is maintained for NASA by programmer <a href="https://github.com/chrisccerami/mars-photo-api">Chris Cerami.</a> Thank you, Chris! And now for the Favicon! (the little picture that appears next to my app name on the tab of your web browser.) It was made by Icon made by <a href="https://www.freepik.com/">Freepik</a> from <a href="https://www.flaticon.com/">Flaticon</a>. Good work, folks!
             </p>
             <br/>
 

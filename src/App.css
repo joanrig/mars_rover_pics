@@ -124,3 +124,10 @@ p {
   float: left;
 
 }
+
+.favicon-credit {
+  height: 100px;
+  width: auto;
+  float: right;
+  margin: 2vw;
+}
