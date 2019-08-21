@@ -5,6 +5,7 @@ import ChooseDateType from './ChooseDateType'
 import ChooseRover from './ChooseRover'
 import ChooseCamera from './ChooseCamera'
 import RoverPic from './RoverPic'
+import ResultsBanner from './ResultsBanner'
 import { EventEmitter } from './events.js'
 
 
@@ -19,7 +20,7 @@ class Search extends Component {
       earth_date: "",
       dateType: "",
       show: "route",
-      stepThree: ""
+      showStep: 1
     }
     EventEmitter.subscribe('getRoverInput', (event) => this.handleChange(event))
     EventEmitter.subscribe('getDateInput', (event) => this.handleChange(event))
@@ -74,17 +75,7 @@ class Search extends Component {
 
     //show default pic before search, results after
     if (photos.length > 0) {
-      results =
-      <>
-        <h3>found {photos.length} photos</h3>
-        <p>
-        <em>
-          seeing double? many of the images are stereographic, taken at the same time by two cameras that are slightly offset.
-          <br/>
-          <a href="https://www.instructables.com/id/How-to-view-stereo-graphic-images/">How to view them</a>
-        </em>
-        </p>
-      </>
+      results = <ResultsBanner photos={this.state.photos} />
     }
 
     let stepOne = <ChooseRover rover={this.state.rover} />
@@ -124,11 +115,9 @@ class Search extends Component {
           <br/>
 
           <form>
-            <Grid columns={3} divided>
+            {stepOne}
+            <Grid columns={2} divided>
               <Grid.Row>
-                <Grid.Column>
-                  {stepOne}
-                </Grid.Column>
                 <Grid.Column >
                   {stepTwo}
                 </Grid.Column>
@@ -167,7 +156,6 @@ class Search extends Component {
           <br/>
       </Container>
     )
-
   }
 
 

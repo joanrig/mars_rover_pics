@@ -45,7 +45,7 @@ class ChooseCamera extends Component {
         <label>
          <h2> Step 3</h2><br/>
          <select
-          className="select"
+          className="camera-dropdown"
           name="camera"
           camera={this.state.camera}
           onChange={(event) => EventEmitter.dispatch('getCameraInput', event)}>

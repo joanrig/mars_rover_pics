@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { EventEmitter } from './events.js'
 
-class ChooseRover extends Component {
+class ChooseRover extends PureComponent {
   constructor(props){
     super(props)
 
@@ -24,7 +24,7 @@ class ChooseRover extends Component {
             name="rover"
             rover={this.state.rover}
             onChange={(event) => EventEmitter.dispatch('getDateInput', event)} >
-            
+
            <option disabled selected value> Pick a Rover </option>
            <option value="curiosity">Curiosity</option>
            <option value="spirit">Spirit</option>
