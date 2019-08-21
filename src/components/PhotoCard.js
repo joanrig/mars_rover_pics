@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Icon, Popup } from 'semantic-ui-react'
 
 
 
@@ -12,16 +12,21 @@ class PhotoCard extends Component {
       notFound = "No photos found. Please try again."
     }
 
+    let imageUrl = this.props["img_src"]
+
     return (
     <>
       {notFound}
       <Card className="photoCard">
-        <Image src={this.props["img_src"]} wrapped ui={false}  />
+        <Image src={imageUrl} wrapped ui={false}  />
 
         <Card.Content >
           <Card.Header >
             <h1>{this.props["rover"]["name"]}</h1>
             <h3>{this.props["camera"]["full_name"]}</h3>
+            <a href={imageUrl} target="_blank">
+              <Popup content='open image in new tab' trigger={<Icon className="large magnify"/>} />
+            </a>
           </Card.Header>
         </Card.Content>
 

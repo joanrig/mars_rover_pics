@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Image, Button, Grid, Card } from 'semantic-ui-react'
+import { Container, Image, Button, Card } from 'semantic-ui-react'
 import PhotoCard from './PhotoCard'
 import CameraOptions from './CameraOptions'
 import ChooseDateType from './ChooseDateType'
@@ -17,7 +17,7 @@ class Search extends Component {
       earth_date: "",
       dateType: "",
       show: "route",
-      stepThree: ""
+      showStepThree: false
     }
     EventEmitter.subscribe('getDateInput', (event) => this.handleChange(event))
   }
@@ -50,19 +50,45 @@ class Search extends Component {
     fetch(url)
       .then(response => response.json())
       .then(photos => this.setState({photos: photos["photos"]}))
-      console.log(this.state.photos)
     }
 
   handleClick = (event) => {
-    this.setState({show: event.target.name})
+    this.setState({...this.state, show: event.target.name})
   }
 
+  handleSubmitDate = () => {
+    console.log('date submitted!!!!!!!!!!!!!!!!!!!')
+    console.log('this.state is', this.state)
+    this.setState({showStepThree: true})
+    console.log('i just reset state to showStepThree is true, check it out', this.state)
+
+
+  }
+
+
   render(){
+
+
+    let stepOne =
+      <label>
+       <h2> Step 1 </h2><br/>
+       <select className="select" name="rover" rover={this.state.rover} onChange={this.handleChange} >
+         <option disabled selected value> Pick a Rover </option>
+         <option value="curiosity">Curiosity</option>
+         <option value="spirit">Spirit</option>
+         <option value="opportunity">Opportunity</option>
+       </select>
+     </label>
+     let showStep = stepOne
+
+
 
     let photos = this.state.photos
     let rover = this.state.rover
     let show = this.state.show
-    let roverPic = ""
+    let roverPic
+
+
 
     let curiosityCams = <Image src="https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA15952_hires.jpg" />
     let curiosityRoute = <Image src="https://mars.nasa.gov/msl/imgs/2019/07/MSL_TraverseMap_Sol2480-full.jpg" />
@@ -94,11 +120,19 @@ class Search extends Component {
     }
 
     //show get photos button after inputs for rover & camera
-    let results = ""
-    let buttons = ""
-    let getPhotosButton = ""
+    let results
+    let buttons
+    let getPhotosButton
     if (rover && this.state.camera) {
-      getPhotosButton =  <Button size="large" color="brown" onClick={this.fetchPics} disabled={!this.state.camera}>Get Photos</Button>
+      getPhotosButton =
+        <Button
+          size="large"
+          color="brown"
+          onClick={this.fetchPics}
+          disabled={!this.state.camera}
+        >
+          Get Photos
+        </Button>
     }
 
     //show default pic before search, results after
@@ -120,34 +154,46 @@ class Search extends Component {
     }
 
     // after step 1 input, show step 2
-    let stepTwo = ""
+    let stepTwo
+    console.log('at start of step two, this.state is', this.state)
     if (rover){
-      console.log(this.state)
       buttons =
       <>
         <Button name="route" onClick={this.handleClick}> Route </Button>
         <Button name="cameras" onClick={this.handleClick}> Cameras </Button>
       </>
       stepTwo = <ChooseDateType />
+      showStep = stepTwo
     }
 
-    // after step 2 input, show cameras pic and step 3
-    let date = this.state.sol || this.state.earth_date
-    let stepThree = ""
-    if (date) {
-      stepThree =
-      <>
-        <label>
-         <h2> Step 3</h2><br/>
-         <select className="select" name="camera" camera={this.state.camera} onChange={this.handleChange}>
-          <option disabled selected value> Pick a Camera </option>
-           <CameraOptions rover={this.state.rover} />
-         </select>
-       </label>
-       <h4>Which cameras are which? <br/>
-       Click the "cameras" button below to find out.</h4>
-      </>
+    // after step 2 input, show button to submit date
+    let submitDate
+    if (this.state.sol || this.state.earth_date) {
+      submitDate = <Button onClick={this.handleSubmitDate}>submit</Button>
     }
+
+    let stepThree
+      if (this.state.showStepThree) {
+        console.log('at start of step 3, this.state is', this.state)
+        showStep = stepThree
+        stepThree =
+        <>
+          <label>
+           <h2> Step 3</h2><br/>
+           <select
+            className="select camera"
+            name="camera"
+            camera={this.state.camera}
+            onChange={this.handleChange}>
+            <option disabled default value> Pick a Camera </option>
+             <CameraOptions rover={this.state.rover} />
+           </select>
+         </label>
+         <h4>Which cameras are which? <br/>
+         Click the "cameras" button below to find out.</h4>
+        </>
+      }
+
 
 
 
@@ -167,27 +213,10 @@ class Search extends Component {
           <br/>
 
           <form>
-          <Grid columns={3} divided>
-            <Grid.Row>
-              <Grid.Column>
-                <label>
-                 <h2> Step 1 </h2><br/>
-                 <select className="select" name="rover" rover={this.state.rover} onChange={this.handleChange} >
-                   <option disabled selected value> Pick a Rover </option>
-                   <option value="curiosity">Curiosity</option>
-                   <option value="spirit">Spirit</option>
-                   <option value="opportunity">Opportunity</option>
-                 </select>
-               </label>
-              </Grid.Column>
-              <Grid.Column >
-                {stepTwo}
-              </Grid.Column>
-              <Grid.Column>
-                {stepThree}
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+          <div className="content">
+            {showStep}
+            {submitDate}
+          </div>
 
           </form>
           <br/>
