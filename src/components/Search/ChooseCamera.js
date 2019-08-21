@@ -81,6 +81,9 @@ class ChooseCamera extends Component {
 
          </select>
         </label>
+        <br/>
+        <br/>
+        <br/>
         <h4>Which cameras are which? <br/>
         Click the "cameras" button below to find out.</h4>
       </>

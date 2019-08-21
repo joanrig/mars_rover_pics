@@ -109,6 +109,9 @@ class Search extends Component {
           <div className="massive">
             Search Mars Rover Photos
           </div>
+            <h4>Powered by data from the United States National Aeronautics and Space Administration</h4>
+
+          <br/>
           <br/>
           <br/>
 
