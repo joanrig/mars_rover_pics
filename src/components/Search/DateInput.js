@@ -7,8 +7,23 @@ class DateInput extends Component {
 
   state = {
     sol:"",
-    earth_date:""
+    earth_date:"",
+    width: window.innerWidth
   }
+
+  componentDidMount() {
+     window.addEventListener('resize', this.handleWindowSizeChange);
+   }
+
+  componentWillUnmount() {
+     window.removeEventListener('resize', this.handleWindowSizeChange);
+   }
+
+  handleWindowSizeChange = () => {
+     this.setState({ width: window.innerWidth });
+   }
+
+  handleChange = (event) => this.setState({ rover: event.target.value })
 
   handleChange = (event) => {
     const target = event.target;
@@ -21,23 +36,32 @@ class DateInput extends Component {
 
   render() {
 
+    let isMobile
+    const width = this.state.width
+    width <= 500 ? isMobile = true : isMobile = false
+
+    let dateStyle
+
+    isMobile? dateStyle = "date-input-mobile" : dateStyle = "date-input-fullscreen"
+
+
     let dateInput = ""
 
     if (this.props.dateType === "sol") {
       dateInput =
           <input
-            className="center sol dates"
+            className={dateStyle}
             name="sol"
             type="number"
             placeholder="enter sol"
             value={this.state.sol}
             onChange={(event) => EventEmitter.dispatch('getDateInput', event)}
           />
-          
+
     } else if (this.props.dateType === "earth_date") {
       dateInput =
         <input
-          className="center earth-date dates"
+          className={dateStyle}
           name="earth_date"
           type="text"
           placeholder="YYYY-MM-DD"

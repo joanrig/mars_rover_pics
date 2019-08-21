@@ -105,17 +105,18 @@ class Search extends Component {
         <Container className="center search">
           <br/>
           <br/>
-          <br/>
+
           <div className="massive">
             Search Mars Rover Photos
           </div>
           <br/>
           <br/>
-          <br/>
-          <br/>
 
           <form>
             {stepOne}
+            <br/>
+            <br/>
+            <br/>
             <Grid columns={2} divided>
               <Grid.Row>
                 <Grid.Column >

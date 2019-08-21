@@ -6,13 +6,35 @@ class ChooseCamera extends Component {
     super(props)
 
     this.state = {
-      camera: ""
+      camera: "",
+      width: window.innerWidth
     }
   }
+
+  componentDidMount() {
+     window.addEventListener('resize', this.handleWindowSizeChange);
+   }
+
+  componentWillUnmount() {
+     window.removeEventListener('resize', this.handleWindowSizeChange);
+   }
+
+  handleWindowSizeChange = () => {
+     this.setState({ width: window.innerWidth });
+   }
+
+  handleChange = (event) => this.setState({ rover: event.target.value })
 
   handleChange = (event) => this.setState({ camera: event.target.value })
 
   render() {
+
+    let isMobile
+    const width = this.state.width
+    width <= 500 ? isMobile = true : isMobile = false
+
+    let style
+    isMobile ? style = "camera-dropdown-mobile" : style = "camera-dropdown-fullscreen"
 
     let options = ""
     if (this.props.rover === "spirit" || this.props.rover === "opportunity") {
@@ -44,8 +66,9 @@ class ChooseCamera extends Component {
       <>
         <label>
          <h2> Step 3</h2><br/>
+         <br/>
          <select
-          className="camera-dropdown"
+          className={style}
           name="camera"
           camera={this.state.camera}
           onChange={(event) => EventEmitter.dispatch('getCameraInput', event)}>
