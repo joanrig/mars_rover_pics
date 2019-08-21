@@ -1,8 +1,7 @@
-.App {
+/* .App {
   text-align: center;
   background-color: rgb(216,175,156)
-
-}
+} */
 body {
   /* background-image: linear-gradient(to right, rgba(181,125,78,0), rgba(181,125,78,0.75)); */
   background-image: linear-gradient(to right, rgba(103,103,103,0), rgba(103,103,103,0.75));
@@ -114,4 +113,12 @@ p {
   font-size: 1.2vw;
   background-color: rgba(0,0,0,0.5);
   color: white;
+}
+
+.home-headline {
+  font-size: 3vw;
+}
+
+.about-text p {
+  font-size: 3vw;
 }
