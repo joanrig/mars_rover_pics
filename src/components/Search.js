@@ -17,7 +17,7 @@ class Search extends Component {
       earth_date: "",
       dateType: "",
       show: "route",
-      showStepThree: false
+      showStepThree: ""
     }
     EventEmitter.subscribe('getDateInput', (event) => this.handleChange(event))
   }
@@ -53,14 +53,14 @@ class Search extends Component {
     }
 
   handleClick = (event) => {
-    this.setState({...this.state, show: event.target.name})
+    this.setState({show: event.target.name})
   }
 
   handleSubmitDate = () => {
     console.log('date submitted!!!!!!!!!!!!!!!!!!!')
-    console.log('this.state is', this.state)
+    console.log('this.state.showStepThree is', this.state.showStepThree)
     this.setState({showStepThree: true})
-    console.log('i just reset state to showStepThree is true, check it out', this.state)
+    console.log('i just reset state to showStepThree is true, check it out it is', this.state.showStepThree)
 
 
   }
@@ -82,12 +82,10 @@ class Search extends Component {
      let showStep = stepOne
 
 
-
     let photos = this.state.photos
     let rover = this.state.rover
     let show = this.state.show
     let roverPic
-
 
 
     let curiosityCams = <Image src="https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA15952_hires.jpg" />
