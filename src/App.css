@@ -1,11 +1,6 @@
-/* .App {
-  text-align: center;
-  background-color: rgb(216,175,156)
-} */
+
 body {
-  /* background-image: linear-gradient(to right, rgba(181,125,78,0), rgba(181,125,78,0.75)); */
   background-image: linear-gradient(to right, rgba(103,103,103,0), rgba(103,103,103,0.75));
-  /* background-image: linear-gradient(to right, white,grey,tan);  */
 }
 
 p {
@@ -38,24 +33,15 @@ p {
   height: 1232px;
 }
 
-/* .home, .navbar
-  background-color: rgb(216,175,156)
-} */
-
-
-
 .radio {
   background-image: linear-gradient(to right, rgba(119,119,119,0), rgba(119,119,119,0));
+  font-size: 2vw;
 }
 
 .scroll {
   overflow: scroll;
 }
 
-
-.App-link {
-  color: #61dafb;
-}
 
 .select-mobile {
   text-align-last:center;
@@ -90,6 +76,7 @@ p {
   color:black;
   background-color: rgba(167,97,47,0.5);
   height: 3vw;
+  max-width: 15vw;
   /* background-color: rgba(204,110,87,0.8); */
 }
 
@@ -99,14 +86,15 @@ p {
 
 .date-input-mobile {
   text-align-last:center;
-  background-color: rgba(112,62,29,0.3);
+  background-color: rgba(166,128,104,0.6);
   font-size: 3.8vw;
 }
 
 .date-input-fullscreen {
   text-align-last:center;
-  background-color: rgba(112,62,29,0.3);
+  background-color: rgba(166,128,104,0.6);;
   font-size: 2vw;
+  max-width: 15vw;
 }
 
 .no-photos-found {
@@ -115,10 +103,22 @@ p {
   color: white;
 }
 
+
 .home-headline {
+  font-size: 2.5vw;
+}
+
+.about-text-mobile p {
   font-size: 3vw;
 }
 
-.about-text p {
-  font-size: 3vw;
+.about-text-fullscreen p {
+  font-size: 1.5vw;
+}
+
+.react-logo {
+  height: 10vw;
+  width: auto;
+  float: left;
+
 }

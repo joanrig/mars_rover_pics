@@ -139,6 +139,8 @@ class Search extends Component {
     if (this.state.getPhotosButtonClicked && photos.length === 0 ){
       resultsMessage =
       <NoPhotosFound />
+    } else if (photos.length > 0) {
+      buttons = ""
     }
 
     return (
@@ -170,9 +172,10 @@ class Search extends Component {
           </form>
           <br/>
           <hr/>
-          {resultsMessage}
           <br/>
           {getPhotosButton}
+          <br/>
+          {resultsMessage}
           <br/>
           <br/>
           <div className="center">
@@ -182,8 +185,6 @@ class Search extends Component {
           {buttons}
           <RoverPic photos={this.state.photos} rover={this.state.rover} show={this.state.show}/>
           </div>
-          <br/>
-          <br/>
           <br/>
           <br/>
           <br/>

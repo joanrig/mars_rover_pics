@@ -29,13 +29,14 @@ class NoPhotosFound extends PureComponent {
           No photos were found.
           <br/>
           Not every camera takes pictures every day. :(
+          And even rovers get a few days off.
           <br/>
           <br/>
           To improve search results:
           <br/>
-          Try selecting all cameras instead of one camera.
+          Select all cameras instead of one camera.
           <br/>
-          Try searching by sol.
+          Search by sol.
           <br/>
           (confine your search range to the sols listed on the map).
           <br/>

@@ -11,11 +11,13 @@ const Home = () => {
       <br/>
       <br/>
       <br/>
-      <div className="appName">
+      <div className="massive">
         Mars Rover Photo Finder
       </div>
       <br/>
-      <span className="home-headline">click search to find photos from Spirit, Opportunity and Curiosity!</span>
+      <br/>
+      <br/>
+      <span className="home-headline">see photos from Spirit, Opportunity and Curiosity!</span>
       <br/>
       <br/>
       <br/>

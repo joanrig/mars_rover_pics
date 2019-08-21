@@ -64,28 +64,27 @@ class ChooseCamera extends Component {
 
     return (
       <>
-        <label>
-         <h2> Step 3</h2><br/>
-         <br/>
-         <select
-          className={style}
-          name="camera"
-          camera={this.state.camera}
-          onChange={(event) => EventEmitter.dispatch('getCameraInput', event)}>
-
-          <option disabled selected value>
-            Pick a Camera
-          </option>
-
-          {options}
-
-         </select>
-        </label>
-        <br/>
+        <h2> Step 3</h2>
         <br/>
         <br/>
         <h4>Which cameras are which? <br/>
-        Click the "cameras" button below to find out.</h4>
+         Click the "cameras" button below to find out.</h4>
+        <br/>
+        <br/>
+        <br/>
+        <select
+         className={style}
+         name="camera"
+         camera={this.state.camera}
+         onChange={(event) => EventEmitter.dispatch('getCameraInput', event)}>
+
+         <option disabled selected value>
+           Pick a Camera
+         </option>
+
+         {options}
+
+        </select>
       </>
     )
   }
