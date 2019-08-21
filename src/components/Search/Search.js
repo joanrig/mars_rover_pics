@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Button, Grid, Card } from 'semantic-ui-react'
 import PhotoCard from './PhotoCard'
-import CameraOptions from './CameraOptions'
 import ChooseDateType from './ChooseDateType'
+import ChooseRover from './ChooseRover'
+import ChooseCamera from './ChooseCamera'
 import RoverPic from './RoverPic'
 import { EventEmitter } from './events.js'
 
@@ -20,7 +21,9 @@ class Search extends Component {
       show: "route",
       stepThree: ""
     }
+    EventEmitter.subscribe('getRoverInput', (event) => this.handleChange(event))
     EventEmitter.subscribe('getDateInput', (event) => this.handleChange(event))
+    EventEmitter.subscribe('getCameraInput', (event) => this.handleChange(event))
   }
 
   handleChange = (event) => {
@@ -59,7 +62,6 @@ class Search extends Component {
   }
 
   render(){
-
     //show get photos button after inputs for rover & camera
     let photos = this.state.photos
     let rover = this.state.rover
@@ -85,11 +87,11 @@ class Search extends Component {
       </>
     }
 
+    let stepOne = <ChooseRover rover={this.state.rover} />
 
     // after step 1 input, show step 2
     let stepTwo
     if (rover){
-      console.log(this.state)
       buttons =
       <>
         <Button name="route" onClick={this.handleClick}> Route </Button>
@@ -104,18 +106,9 @@ class Search extends Component {
     if (date) {
       stepThree =
       <>
-        <label>
-         <h2> Step 3</h2><br/>
-         <select className="select" name="camera" camera={this.state.camera} onChange={this.handleChange}>
-          <option disabled selected value> Pick a Camera </option>
-           <CameraOptions rover={this.state.rover} />
-         </select>
-       </label>
-       <h4>Which cameras are which? <br/>
-       Click the "cameras" button below to find out.</h4>
+        <ChooseCamera rover={this.state.rover} />
       </>
     }
-
 
     return (
         <Container className="center search">
@@ -131,36 +124,25 @@ class Search extends Component {
           <br/>
 
           <form>
-          <Grid columns={3} divided>
-            <Grid.Row>
-              <Grid.Column>
-                <label>
-                 <h2> Step 1 </h2><br/>
-                 <select className="select" name="rover" rover={this.state.rover} onChange={this.handleChange} >
-                   <option disabled selected value> Pick a Rover </option>
-                   <option value="curiosity">Curiosity</option>
-                   <option value="spirit">Spirit</option>
-                   <option value="opportunity">Opportunity</option>
-                 </select>
-               </label>
-              </Grid.Column>
-              <Grid.Column >
-                {stepTwo}
-              </Grid.Column>
-              <Grid.Column>
-                {stepThree}
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-
+            <Grid columns={3} divided>
+              <Grid.Row>
+                <Grid.Column>
+                  {stepOne}
+                </Grid.Column>
+                <Grid.Column >
+                  {stepTwo}
+                </Grid.Column>
+                <Grid.Column>
+                  {stepThree}
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </form>
           <br/>
           <br/>
           <hr/>
           {getPhotosButton}
-
           <br/>
-
           <br/>
           <br/>
           <br/>
@@ -174,7 +156,6 @@ class Search extends Component {
           <br/>
           <br/>
           <br/>
-
           <Card.Group itemsPerRow={2}>
             {this.state.photos.map(photo =>
               <PhotoCard
@@ -184,7 +165,6 @@ class Search extends Component {
           <br/>
           <br/>
           <br/>
-
       </Container>
     )
 
