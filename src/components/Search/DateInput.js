@@ -48,6 +48,7 @@ class DateInput extends Component {
     let dateInput = ""
 
     if (this.props.dateType === "sol") {
+      console.log(this.props)
       dateInput =
           <input
             className={dateStyle}

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Container, Button, Grid, Card } from 'semantic-ui-react'
+import { Container, Button, Grid, Card, Loader } from 'semantic-ui-react'
 import PhotoCard from './PhotoCard'
 import ChooseDateType from './ChooseDateType'
 import ChooseRover from './ChooseRover'
 import ChooseCamera from './ChooseCamera'
 import RoverPic from './RoverPic'
 import ResultsBanner from './ResultsBanner'
-import ErrorMessage from './ErrorMessage'
+// import ErrorMessage from './ErrorMessage'
 import { EventEmitter } from './events.js'
 
 
@@ -22,12 +22,25 @@ class Search extends Component {
       dateType: "",
       show: "route",
       showStep: 1,
-      getPhotosButtonClicked: false
+      getPhotosButtonClicked: false,
+      width: window.innerWidth
     }
     EventEmitter.subscribe('getRoverInput', (event) => this.handleChange(event))
     EventEmitter.subscribe('getDateInput', (event) => this.handleChange(event))
     EventEmitter.subscribe('getCameraInput', (event) => this.handleChange(event))
   }
+
+  componentDidMount() {
+     window.addEventListener('resize', this.handleWindowSizeChange)
+   }
+
+  componentWillUnmount() {
+     window.removeEventListener('resize', this.handleWindowSizeChange)
+   }
+
+  handleWindowSizeChange = () => {
+     this.setState({ width: window.innerWidth })
+   }
 
   handleChange = (event) => {
     const target = event.target
@@ -38,35 +51,50 @@ class Search extends Component {
 
   fetchPics = () => {
     this.setState({ getPhotosButtonClicked: true })
-
-    const rover = this.state["rover"]
-    const camera = this.state["camera"]
-
-    let date = ""
-    if (this.state.sol > 0) {
-      date = `sol=${this.state.sol}`
-    } else if (this.state.earth_date){
-      date = `earth_date=${this.state.earth_date}`
-    }
-
-    let url = ""
-    if (this.state.camera !== "all"){
-      url =  `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&camera=${camera}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
-    } else {
-      url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
-    }
+    let date = this.setDate()
+    let url = this.setURL(date)
 
     fetch(url)
       .then(response => response.json())
       .then(photos => this.setState({photos: photos["photos"]}))
       console.log(this.state.photos)
+  }
+
+  setDate = () => {
+    let date
+    if (this.state.sol > 0) {
+      date = `sol=${this.state.sol}`
+    } else if (this.state.earth_date){
+      date = `earth_date=${this.state.earth_date}`
     }
+    return date
+  }
+
+  setURL = (date) => {
+    let rover = this.state.rover
+    let camera = this.state.camera
+    let url
+    if (camera !== "all"){
+      url =  `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&camera=${camera}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
+    } else {
+      url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
+    }
+    return url
+  }
 
   handleClick = (event) => {
     this.setState({show: event.target.name})
   }
 
   render(){
+
+    let isMobile
+    const width = this.state.width
+    width <= 500 ? isMobile = true : isMobile = false
+
+    let itemsPerRow
+    isMobile? itemsPerRow = 1 : itemsPerRow = 2
+
     //show get photos button after inputs for rover & camera
     let photos = this.state.photos
     let rover = this.state.rover
@@ -92,7 +120,7 @@ class Search extends Component {
         <Button name="route" onClick={this.handleClick}> Route </Button>
         <Button name="cameras" onClick={this.handleClick}> Cameras </Button>
       </>
-      stepTwo = <ChooseDateType />
+      stepTwo = <ChooseDateType rover={this.state.rover}/>
     }
 
     // after step 2 input, show cameras pic and step 3
@@ -108,7 +136,7 @@ class Search extends Component {
     //error message replaces getPhotosButton
     let noResults
     if (this.state.getPhotosButtonClicked && this.state.photos.length === 0 ){
-      noResults = <ErrorMessage />
+      noResults = <Loader active inline />
     }
 
 
@@ -121,8 +149,7 @@ class Search extends Component {
           <div className="massive">
             Search Mars Rover Photos
           </div>
-            <h4>Powered by data from the United States National Aeronautics and Space Administration</h4>
-
+            <h4>Powered by data from NASA's Mars Rover API</h4>
           <br/>
           <br/>
           <br/>
@@ -144,13 +171,10 @@ class Search extends Component {
             </Grid>
           </form>
           <br/>
-          <br/>
           <hr/>
           {noResults}
           <br/>
           {getPhotosButton}
-          <br/>
-          <br/>
           <br/>
           <br/>
           <div className="center">
@@ -165,7 +189,7 @@ class Search extends Component {
           <br/>
           <br/>
           <br/>
-          <Card.Group itemsPerRow={2}>
+          <Card.Group itemsPerRow={itemsPerRow}>
             {this.state.photos.map(photo =>
               <PhotoCard
                 key={photo["id"]} {...photo} />

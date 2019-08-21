@@ -35,7 +35,7 @@ class ChooseDateType extends Component {
           </Form.Field>
         </Form>
         <br/>
-        <DateInput dateType={this.state.value} />
+        <DateInput dateType={this.state.value} rover={this.props.rover} />
       </>
     )
   }

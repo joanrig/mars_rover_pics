@@ -52,7 +52,7 @@ const About = () => {
 
         <h3>Thanks to NASA!</h3>
         <p>
-          I couldn't have made this app without the data from NASA, which maintains several APIs to serve up data based on the hard work of its scientists and engineers. This app is based on the  <a href="https://api.nasa.gov/api.html#MarsPhotos">Mars Rover Photos API</a>.
+          I couldn't have made this app without the data from NASA, which hosts several APIs to serve up data based on the hard work of its scientists and engineers. This app is based on the  <a href="https://api.nasa.gov/api.html#MarsPhotos">Mars Rover Photos API</a> which is maintained by <a href="https://github.com/chrisccerami/mars-photo-api">Chris Cerami.</a> Thank you, Chris!
         </p>
         <br/>
 
