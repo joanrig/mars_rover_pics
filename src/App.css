@@ -29,8 +29,10 @@ p {
 .roverGraphic {
   -webkit-user-select: none;
   cursor: zoom-in;
-  width: 1926px;
-  height: 1232px;
+  max-height: 100%;
+  width: auto;
+  /* width: 1926px;
+  height: 1232px; */
 }
 
 .radio {
