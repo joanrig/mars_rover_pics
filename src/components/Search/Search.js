@@ -140,7 +140,6 @@ class Search extends Component {
     }
 
 
-
     return (
         <Container className="center search">
           <br/>
