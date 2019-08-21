@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Image, Button } from 'semantic-ui-react'
-import Intro from '../components/Intro'
+import Intro from './Intro'
 import rovergraphic from './rovergraphic.png'
-import SpiritVideo from '../components/SpiritVideo'
-import SevenMinutesVideo from '../components/SevenMinutesVideo'
-import SojournerVideo from '../components/SojournerVideo'
-import OpportunityVideo from '../components/OpportunityVideo'
+import SpiritVideo from './SpiritVideo'
+import SevenMinutesVideo from './SevenMinutesVideo'
+import SojournerVideo from './SojournerVideo'
+import OpportunityVideo from './OpportunityVideo'
 
 
 class RoversContainer extends Component {

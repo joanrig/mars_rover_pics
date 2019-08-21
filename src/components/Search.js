@@ -60,13 +60,9 @@ class Search extends Component {
 
   render(){
 
+    //show get photos button after inputs for rover & camera
     let photos = this.state.photos
     let rover = this.state.rover
-
-
-
-
-    //show get photos button after inputs for rover & camera
     let results
     let buttons
     let getPhotosButton
@@ -119,9 +115,6 @@ class Search extends Component {
        Click the "cameras" button below to find out.</h4>
       </>
     }
-
-
-
 
 
     return (

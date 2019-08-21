@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Search from './components/Search'
-import RoversContainer from './containers/RoversContainer'
+import RoversContainer from './Rovers/RoversContainer'
 import About from './components/About'
 
 
