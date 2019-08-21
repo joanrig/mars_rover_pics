@@ -13,12 +13,10 @@ class ChooseCamera extends Component {
     }
   }
 
-  handleChange = (event) => {
-    const target = event.target
-    const value = target.value
-    const name = target.name
-    this.setState({[name]: value})
+  handleSelect = (event) => {
+    this.props.setCamera(event.target.value)
   }
+
 
 
 
@@ -30,9 +28,13 @@ class ChooseCamera extends Component {
       <>
         <label>
          <h2> Step 3</h2><br/>
-         <select className="select" name="camera" camera={this.state.camera} onChange={this.handleChange}>
+         <select
+          className="select"
+          name="camera"
+          camera={this.state.camera}
+          onChange={this.handleSelect}>
           <option disabled selected value> Pick a Camera </option>
-           <CameraOptions rover={this.state.rover} />
+          <CameraOptions rover={this.props.rover} />
          </select>
         </label>
         <h4>Which cameras are which? <br/>
@@ -43,7 +45,7 @@ class ChooseCamera extends Component {
 }
 
 
-const mapStateToProps = state => ({ camera: state.camera })
+const mapStateToProps = state => ({ rover: state.rover })
 
 
 export default connect(mapStateToProps)(ChooseCamera)

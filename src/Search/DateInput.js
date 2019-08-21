@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
+import { setDate } from './SearchActions'
 
 
 class DateInput extends Component {
@@ -26,9 +27,9 @@ class DateInput extends Component {
       date = `earthDate=${this.state.earthDate}`
     }
 
-    this.setState({ date: date })
+    this.props.setDate(date)
   }
-  
+
 
   render() {
 
@@ -45,14 +46,14 @@ class DateInput extends Component {
             onChange={this.handleChange}
           />
 
-    } else if (this.props.dateType === "earth_date") {
+    } else if (this.props.dateType === "earthDate") {
       dateInput =
         <input
           className="center earth-date dates"
-          name="earth_date"
+          name="earthDate"
           type="text"
           placeholder="YYYY-MM-DD"
-          value={this.state.earth_date}
+          value={this.state.earthDate}
           onChange={this.handleChange}
         />
     }
@@ -69,6 +70,5 @@ class DateInput extends Component {
   }
 }
 
-const mapStateToProps = state => ({ date: state.date })
 
-export default connect(mapStateToProps)(DateInput)
+export default connect(null, { setDate })(DateInput)

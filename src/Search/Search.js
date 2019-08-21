@@ -1,45 +1,27 @@
 import React, { Component } from 'react';
-import { Container, Button, Grid, Card } from 'semantic-ui-react'
-import PhotoCard from './PhotoCard'
-import ChooseCamera from './ChooseCamera'
-import ChooseDateType from './ChooseDateType'
+import { Container, Grid, Card } from 'semantic-ui-react'
 import RoverPic from './RoverPic'
+import ChooseRover from './ChooseRover'
+import ChooseDateType from './ChooseDateType'
+import ChooseCamera from './ChooseCamera'
+import GetPhotosButton from './GetPhotosButton'
+import PhotoCard from './PhotoCard'
+import { connect } from 'react-redux'
 
 
 class Search extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      stepThree: ""
-    }
-  }
 
-
-
-  
-
-  handleClick = (event) => {
-    this.setState({show: event.target.name})
-  }
 
   render(){
 
 
 
-    //show get photos button after inputs for rover & camera
-    let results
-
-    let getPhotosButton
-    if (rover && this.props.camera) {
-      getPhotosButton =  <GetPhotosButton />
-
-    }
-
     //show default pic before search, results after
-    if (photos.length > 0) {
+    let results
+    if (this.props.photos && this.props.photos.length > 0) {
       results =
       <>
-        <h3>found {photos.length} photos</h3>
+        <h3>found {this.props.photos.length} photos</h3>
         <p>
         <em>
           seeing double? many of the images are stereographic, taken at the same time by two cameras that are slightly offset.
@@ -53,16 +35,21 @@ class Search extends Component {
 
     // after step 1 input, show step 2
     let stepTwo
-    if (this.props.rover){
+    // if (this.props.rover){
       stepTwo = <ChooseDateType />
-    }
+    // }
 
     // after step 2 input, show cameras pic and step 3
     let stepThree
-    if (this.props.date) {
+    // if (this.props.showStepThree) {
       stepThree = <ChooseCamera />
-    }
+    // }
 
+    //after inputs for rover & camera show get photos button
+    let getPhotosButton
+    if (this.props.rover && this.props.camera) {
+      getPhotosButton =  <GetPhotosButton />
+    }
 
 
 
@@ -117,7 +104,7 @@ class Search extends Component {
           <br/>
 
           <Card.Group itemsPerRow={2}>
-            {this.props.photos.map(photo =>
+            {this.props.photos && this.props.photos.map(photo =>
               <PhotoCard
                 key={photo["id"]} {...photo} />
               )}
@@ -130,7 +117,13 @@ class Search extends Component {
     )
 
   }
-
-
 }
-export default Search
+
+const mapStateToProps = state => ({
+  rover: state.rover,
+  cameras: state.cameras,
+  photos: state.photos,
+  date: state.date
+ })
+
+export default (connect)(mapStateToProps)(Search)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {  } from 'semantic-ui-react'
+import { setRover } from './SearchActions'
 
 
 class ChooseRover extends Component {
@@ -12,11 +12,8 @@ class ChooseRover extends Component {
     }
   }
 
-  handleChange = (event) => {
-    const target = event.target
-    const value = target.value
-    const name = target.name
-    this.setState({[name]: value})
+  handleSelect = (event) => {
+    this.props.setRover(event.target.value)
   }
 
   render() {
@@ -25,7 +22,7 @@ class ChooseRover extends Component {
       <>
         <label>
          <h2> Step 1 </h2><br/>
-         <select className="select" name="rover" rover={this.state.rover} onChange={this.handleChange} >
+         <select className="select" name="rover" rover={this.state.rover} onChange={this.handleSelect} >
            <option disabled selected value> Pick a Rover </option>
            <option value="curiosity">Curiosity</option>
            <option value="spirit">Spirit</option>
@@ -38,6 +35,5 @@ class ChooseRover extends Component {
 }
 
 
-const mapStateToProps = state => ({ rover: state.rover })
 
-export default connect(mapStateToProps)(ChooseRover)
+export default connect(null, { setRover })(ChooseRover)

@@ -14,30 +14,31 @@ class GetPhotosButton extends Component {
     this.setState({[name]: value})
   }
 
-  render() {
-
-    fetchPics = () => {
-      let rover = this.props["rover"]
-      let camera = this.props["camera"]
-      let date = this.props["date"]
+  getPics = () => {
+    let rover = this.props["rover"]
+    let camera = this.props["camera"]
+    let date = this.props["date"]
 
 
-      let url
-      if (this.props.camera !== "all"){
-        url =  `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&camera=${camera}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
-      } else {
-        url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
-      }
-
-      this.props.fetchPics(url)
+    let url
+    if (this.props.camera !== "all"){
+      url =  `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&camera=${camera}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
+    } else {
+      url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
     }
 
+    this.props.fetchPics(url)
+  }
+
+  render() {
+
     return (
-      <Button size="large" color="brown" onClick={this.props.fetchPics} disabled={!this.props.camera}>Get Photos</Button>
+      <Button size="large" color="brown" onClick={this.getPics} disabled={!this.props.camera}>Get Photos</Button>
       )
     }
   }
 
 
+const mapStateToProps = state => ({ camera: state.camera, rover: state.rover, date:state.date })
 
-export default (connect)(null, { fetchPics })(GetPhotosButton)
+export default (connect)(mapStateToProps, { fetchPics })(GetPhotosButton)

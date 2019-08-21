@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Image, Button } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 
 class RoverPic extends PureComponent {
@@ -9,6 +10,10 @@ class RoverPic extends PureComponent {
     this.state =  {
       show:"route"
     }
+  }
+
+  handleClick = (event) => {
+    this.setState({show: event.target.name})
   }
 
 
@@ -25,7 +30,7 @@ class RoverPic extends PureComponent {
     let spiritRoute = <Image src="https://mars.nasa.gov/mer/mission/tm-spirit/images/MERA_Sol2518_1.jpg" />
 
     //show route / camera pics on rover choice
-    if (photos.length === 0) {
+    if (photos && photos.length === 0) {
       if (rover === "curiosity"){
         if (show === "cameras"){
           roverPic = curiosityCams
@@ -47,7 +52,7 @@ class RoverPic extends PureComponent {
       }
     }
 
-    if (photos.length === 0 && !rover) {
+    if (photos && photos.length === 0 && !rover) {
         roverPic = <Image className="ui fluid image" src="https://mars.nasa.gov/system/news_items/main_images/8414_1_MAIN_mars-rover-opportunity-tracks-Sol3754B-pia18605-CROPPED.jpg" />
     }
 
@@ -70,5 +75,11 @@ class RoverPic extends PureComponent {
   }
 }
 
+const mapStateToProps = state => ({
+  rover: state.rover,
+  cameras: state.cameras,
+  photos: state.photos,
+ })
 
-export default RoverPic
+
+export default (connect)(mapStateToProps)(RoverPic)
