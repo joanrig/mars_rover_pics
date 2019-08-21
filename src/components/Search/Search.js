@@ -135,9 +135,13 @@ class Search extends Component {
 
     //error message replaces getPhotosButton
     let noResults
-    if (this.state.getPhotosButtonClicked && this.state.photos.length === 0 ){
+    if (this.state.getPhotosButtonClicked && photos.length === 0 ){
       noResults = <Loader active inline />
+    } else if (photos.length > 0) {
+      buttons = ""
     }
+
+
 
 
     return (
