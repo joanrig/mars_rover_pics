@@ -9,7 +9,6 @@ class RoverPic extends PureComponent  {
 
   render(){
 
-    console.log('hello from roverPic, this.props is', this.props)
 
     let photos = this.props.photos
     let rover = this.props.rover

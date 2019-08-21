@@ -6,6 +6,7 @@ import ChooseRover from './ChooseRover'
 import ChooseCamera from './ChooseCamera'
 import RoverPic from './RoverPic'
 import ResultsBanner from './ResultsBanner'
+import ErrorMessage from './ErrorMessage'
 import { EventEmitter } from './events.js'
 
 
@@ -20,7 +21,8 @@ class Search extends Component {
       earth_date: "",
       dateType: "",
       show: "route",
-      showStep: 1
+      showStep: 1,
+      getPhotosButtonClicked: false
     }
     EventEmitter.subscribe('getRoverInput', (event) => this.handleChange(event))
     EventEmitter.subscribe('getDateInput', (event) => this.handleChange(event))
@@ -35,6 +37,8 @@ class Search extends Component {
   }
 
   fetchPics = () => {
+    this.setState({ getPhotosButtonClicked: true })
+
     const rover = this.state["rover"]
     const camera = this.state["camera"]
 
@@ -101,6 +105,14 @@ class Search extends Component {
       </>
     }
 
+    //error message replaces getPhotosButton
+    let noResults
+    if (this.state.getPhotosButtonClicked && this.state.photos.length === 0 ){
+      noResults = <ErrorMessage />
+    }
+
+
+
     return (
         <Container className="center search">
           <br/>
@@ -134,6 +146,8 @@ class Search extends Component {
           <br/>
           <br/>
           <hr/>
+          {noResults}
+          <br/>
           {getPhotosButton}
           <br/>
           <br/>
@@ -141,6 +155,8 @@ class Search extends Component {
           <br/>
           <div className="center">
             {results}
+          <br/>
+          <br/>
             {buttons}
             <RoverPic photos={this.state.photos} rover={this.state.rover} show={this.state.show}/>
           </div>

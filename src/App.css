@@ -109,3 +109,9 @@ p {
   background-color: rgba(112,62,29,0.3);
   font-size: 2vw;
 }
+
+.no-photos-found {
+  font-size: 1.2vw;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+}
