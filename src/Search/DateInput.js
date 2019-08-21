@@ -1,23 +1,34 @@
 import React, {Component} from 'react'
-import { EventEmitter } from './events.js'
-
+import { connect } from 'react-redux'
 
 
 class DateInput extends Component {
 
   state = {
     sol:"",
-    earth_date:""
+    earthDate:"",
+    dateType: "",
+    date: ""
   }
 
   handleChange = (event) => {
-    const target = event.target;
+    const target = event.target
     const value = target.value
-    const name = target.name;
+    const name = target.name
     this.setState({[name]: value})
-
   }
 
+  handleSubmit = () => {
+    let date
+    if (this.state.sol > 0) {
+      date = `sol=${this.state.sol}`
+    } else if (this.state.earthDate){
+      date = `earthDate=${this.state.earthDate}`
+    }
+
+    this.setState({ date: date })
+  }
+  
 
   render() {
 
@@ -31,9 +42,9 @@ class DateInput extends Component {
             type="number"
             placeholder="enter sol"
             value={this.state.sol}
-            onChange={(event) => EventEmitter.dispatch('getDateInput', event)}
+            onChange={this.handleChange}
           />
-          
+
     } else if (this.props.dateType === "earth_date") {
       dateInput =
         <input
@@ -42,7 +53,7 @@ class DateInput extends Component {
           type="text"
           placeholder="YYYY-MM-DD"
           value={this.state.earth_date}
-          onChange={(event) => EventEmitter.dispatch('getDateInput', event)}
+          onChange={this.handleChange}
         />
     }
 
@@ -50,7 +61,7 @@ class DateInput extends Component {
       <>
         <form
           onChange={this.handleChange}
-          onSubmit={(event) => EventEmitter.dispatch('getDateInput', event)}>
+          onSubmit={this.handleSubmit}>
           {dateInput}
         </form>
       </>
@@ -58,4 +69,6 @@ class DateInput extends Component {
   }
 }
 
-export default DateInput
+const mapStateToProps = state => ({ date: state.date })
+
+export default connect(mapStateToProps)(DateInput)

@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import NavBar from './components/NavBar'
-import Home from './components/Home'
-import Search from './components/Search'
-import RoversContainer from './containers/RoversContainer'
-import About from './components/About'
+import NavBar from './NavBar'
+import Home from './Home'
+import Search from './Search/Search'
+import RoversContainer from './Rovers/RoversContainer'
+import About from './About'
 
 
 
