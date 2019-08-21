@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Icon } from 'semantic-ui-react'
 
 
 
@@ -28,6 +28,7 @@ class PhotoCard extends Component {
         <Card.Content extra >
           <h3>Sol {this.props["sol"]}</h3>
           <h5>Earth Date {this.props["earth_date"]}</h5>
+          <a href={this.props["img_src"]}><Icon className="large magnify" /></a>
         </Card.Content>
       </Card>
     </>
