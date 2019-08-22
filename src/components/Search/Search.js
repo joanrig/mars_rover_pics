@@ -75,9 +75,9 @@ class Search extends Component {
     let camera = this.state.camera
     let url
     if (camera !== "all"){
-      url =  `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&camera=${camera}&api_key=`+[NASA_API_KEY]
+      url =  `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&camera=${camera}&api_key=DEMO_KEY`
     } else {
-      url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&api_key=`+[NASA_API_KEY]
+      url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&api_key=DEMO_KEY`
     }
     return url
   }
