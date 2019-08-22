@@ -71,17 +71,7 @@ class Search extends Component {
     return date
   }
 
-  setURL = (date) => {
-    let rover = this.state.rover
-    let camera = this.state.camera
-    let url
-    if (camera !== "all"){
-      url =  `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&camera=${camera}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
-    } else {
-      url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
-    }
-    return url
-  }
+
 
   handleClick = (event) => {
     this.setState({show: event.target.name})
