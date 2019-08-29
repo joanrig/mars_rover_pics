@@ -56,10 +56,10 @@ p {
 
 .select-fullscreen {
   text-align-last:center;
-  font-size: 2vw;
+  font-size: 1vw;
   color:black;
   background-color: rgba(167,97,47,0.5);
-  height: 3vw;
+  height: 2vw;
   /* background-color: rgba(204,110,87,0.8); */
 }
 
@@ -74,10 +74,10 @@ p {
 
 .camera-dropdown-fullscreen {
   text-align-last:center;
-  font-size: 2vw;
+  font-size: 1vw;
   color:black;
   background-color: rgba(167,97,47,0.5);
-  height: 3vw;
+  height: 2vw;
   max-width: 15vw;
   /* background-color: rgba(204,110,87,0.8); */
 }
@@ -95,7 +95,7 @@ p {
 .date-input-fullscreen {
   text-align-last:center;
   background-color: rgba(166,128,104,0.6);;
-  font-size: 2vw;
+  font-size: 1vw;
   max-width: 15vw;
 }
 

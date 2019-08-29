@@ -71,13 +71,14 @@ class Search extends Component {
   }
 
   setURL = (date) => {
+    const API_URL="http://localhost:3000"
     let rover = this.state.rover
     let camera = this.state.camera
     let url
     if (camera !== "all"){
-      url =  `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&camera=${camera}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
+      url =  `${API_URL}/${rover}/${date}/${camera}`
     } else {
-      url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?${date}&api_key=uzuLTi3MlfUUzqIPjnTuq1geIzqCR3tbkwcEQ98d`
+      url =  `${API_URL}/${rover}/${date}`
     }
     return url
   }

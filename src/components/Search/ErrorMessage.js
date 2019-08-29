@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container, Segment, Image } from 'semantic-ui-react'
 
 
 const ErrorMessage = () => {
