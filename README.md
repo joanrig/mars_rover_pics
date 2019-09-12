@@ -1,3 +1,24 @@
+Welcome to Mars Rover Pics
+
+You can use this web app to search photographs taken by NASA's Mars Rovers. You can search by Rover, date and camera, or by all cameras.
+
+Enjoy!
+
+
+
+Usage
+To run this app:
+
+
+Clone this repo.
+
+Run npm install and npm start. You will be asked if you would like to run the program on another server. Type "Y" for Yes.
+
+Your browser will automatically launch the Mars Rover Pics app to its home page.
+
+You can shut down the serversby typing Control C in the terminal window where they are running.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
